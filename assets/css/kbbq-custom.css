@@ -2370,6 +2370,7 @@ h3 {
     min-height: 80px !important;
     padding: 0.28rem 0.82rem 0.22rem !important;
     align-items: center !important;
+    align-content: flex-start !important;
     justify-content: flex-start !important;
     gap: 0.18rem 0.42rem !important;
     flex-wrap: wrap !important;
@@ -2380,9 +2381,10 @@ h3 {
     display: inline-flex !important;
     align-items: center !important;
     gap: 0.42rem !important;
-    flex: 1 1 auto !important;
+    flex: 0 1 auto !important;
     width: auto !important;
     min-width: 0 !important;
+    max-width: calc(100% - 118px) !important;
     margin: 0 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -2420,12 +2422,12 @@ h3 {
     order: 3 !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 0.12rem 0 0 !important;
+    padding: 0.06rem 0 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.16rem !important;
-    overflow: hidden !important;
+    gap: 0.08rem !important;
+    overflow: visible !important;
     white-space: nowrap !important;
     flex-wrap: nowrap !important;
   }
@@ -2435,11 +2437,11 @@ h3 {
   nav.kbbq-nav a {
     flex: 0 0 auto !important;
     display: inline-flex !important;
-    height: 26px !important;
-    min-height: 26px !important;
-    line-height: 26px !important;
-    padding: 0 0.3rem !important;
-    font-size: 0.72rem !important;
+    height: 24px !important;
+    min-height: 24px !important;
+    line-height: 24px !important;
+    padding: 0 0.22rem !important;
+    font-size: 0.68rem !important;
     font-weight: 850 !important;
   }
 
@@ -2461,7 +2463,7 @@ h3 {
   body.kbbq-site .kbbq-subhero > .kbbq-wrap,
   .kbbq-subhero > .kbbq-wrap,
   body.kbbq-site .kbbq-subhero .kbbq-wrap {
-    padding-top: calc(var(--kbbq-header-h) + 48px) !important;
+    padding-top: calc(var(--kbbq-header-h) + 28px) !important;
     padding-bottom: 3.8rem !important;
   }
 }
