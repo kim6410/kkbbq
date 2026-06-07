@@ -643,5 +643,22 @@ body {
     height: 50px !important;
   }
 }
+
+@media (max-width: 768px) {
+  .kbbq-translate-grid button {
+    border-color: transparent !important;
+    box-shadow:
+      0 8px 16px rgba(24, 12, 6, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    border: 1px solid transparent !important;
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
 =======
 >>>>>>> 4725655e61ecab432a5377bd173e1119f6624e3e
