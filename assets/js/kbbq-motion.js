@@ -6,7 +6,7 @@
       slides[i].classList.remove("is-active");
       i = (i + 1) % slides.length;
       slides[i].classList.add("is-active");
-    }, 5200);
+    }, 7000);
   }
 
   const mobileTapQuery = window.matchMedia("(max-width: 980px)");

@@ -2687,13 +2687,13 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
 @media (min-width: 981px) {
   body.kbbq-site .kbbq-hero,
   .kbbq-hero {
-    min-height: 680px !important;
+    min-height: 1200px !important;
     overflow: hidden !important;
   }
 
   body.kbbq-site .kbbq-subhero,
   .kbbq-subhero {
-    min-height: 520px !important;
+    min-height: 1200px !important;
     padding: 0 !important;
     display: flex !important;
     align-items: center !important;
@@ -2720,7 +2720,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     transform: scale(1) !important;
     transform-origin: center center !important;
     opacity: 0;
-    animation: kbbqHeroZoom 12s ease-in-out infinite alternate;
+    animation: kbbqHeroZoom 7s ease-in-out infinite alternate;
     will-change: transform, opacity;
   }
 
@@ -2737,6 +2737,50 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     transform: scale(1);
   }
   to {
-    transform: scale(1.08);
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 769px) {
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero {
+    min-height: 1200px !important;
+    overflow: hidden !important;
+  }
+
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    min-height: 1200px !important;
+    overflow: hidden !important;
+  }
+
+  body.kbbq-site .kbbq-hero::after,
+  .kbbq-hero::after,
+  body.kbbq-site .kbbq-subhero::after,
+  .kbbq-subhero::after {
+    inset: auto 0 0 !important;
+    height: 34% !important;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 248, 238, 0.98) 0%,
+      rgba(255, 248, 238, 0.72) 42%,
+      rgba(255, 248, 238, 0) 100%
+    ) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg,
+  .kbbq-hero-bg,
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg,
+  .kbbq-subhero .kbbq-hero-bg {
+    background-position: center center !important;
+    background-size: cover !important;
+    animation: kbbqHeroZoom 7s ease-in-out infinite alternate !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg.is-active,
+  .kbbq-hero-bg.is-active,
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg.is-active,
+  .kbbq-subhero .kbbq-hero-bg.is-active {
+    opacity: 1 !important;
   }
 }
