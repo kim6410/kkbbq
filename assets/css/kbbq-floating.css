@@ -233,7 +233,7 @@
 .kbbq-translate-grid button .kbbq-lang-flag {
   display: block;
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-  font-size: 1.95rem;
+  font-size: 2.15rem;
   line-height: 1;
   filter: saturate(1.2);
 }
@@ -327,7 +327,7 @@ body {
   .kbbq-translate-grid button .kbbq-lang-flag {
     display: block;
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-    font-size: 1.72rem;
+    font-size: 1.95rem;
     filter: saturate(1.2);
   }
 

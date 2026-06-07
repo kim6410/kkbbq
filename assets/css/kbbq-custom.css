@@ -17,6 +17,28 @@
   --kbbq-header-h: 74px;
   --kbbq-radius: 26px;
 }
+
+@media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-header,
+  .kbbq-header {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero,
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    margin-top: -1px !important;
+  }
+
+  body.kbbq-site .kbbq-hero::before,
+  .kbbq-hero::before,
+  body.kbbq-site .kbbq-subhero::after,
+  .kbbq-subhero::after {
+    top: -1px !important;
+  }
+}
 * {
   box-sizing: border-box;
 }
