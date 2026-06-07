@@ -1999,3 +1999,76 @@ h3 {
     font-size: 1.72rem !important;
   }
 }
+
+/* =========================================================
+   KBBQ 모바일 히어로 최종 보정
+   - 실제 페이지의 hero / subhero / hero-slider 우선순위를 마지막에서 정리
+   - 980px 이하에서만 적용
+========================================================= */
+@media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero,
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    min-height: 620px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner,
+  body.kbbq-site .kbbq-subhero > .kbbq-wrap,
+  .kbbq-subhero > .kbbq-wrap {
+    width: min(100% - 28px, 1120px) !important;
+    padding-top: 5.4rem !important;
+    padding-bottom: 5.4rem !important;
+  }
+
+  body.kbbq-site .kbbq-hero::before,
+  .kbbq-hero::before {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 6, 3, 0.42) 0%,
+        rgba(10, 6, 3, 0.34) 48%,
+        rgba(10, 6, 3, 0.26) 100%
+      ),
+      url("../../images/kbbq/garden-day.png") center/cover no-repeat !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg::after,
+  .kbbq-hero-bg::after {
+    background: linear-gradient(
+      90deg,
+      rgba(10, 6, 3, 0.42) 0%,
+      rgba(10, 6, 3, 0.34) 48%,
+      rgba(10, 6, 3, 0.26) 100%
+    ) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg,
+  .kbbq-hero-bg {
+    filter: brightness(1.12) saturate(1.08) contrast(1.02) !important;
+  }
+
+  body.kbbq-site .kbbq-hero h1,
+  .kbbq-hero h1,
+  body.kbbq-site .kbbq-subhero h1,
+  .kbbq-subhero h1 {
+    font-size: clamp(2.15rem, 4.8vw, 3.55rem) !important;
+    line-height: 1.12 !important;
+    font-weight: 950 !important;
+    letter-spacing: -0.06em !important;
+  }
+
+  body.kbbq-site .kbbq-hero .lead,
+  .kbbq-hero .lead,
+  body.kbbq-site .kbbq-hero p,
+  .kbbq-hero p,
+  body.kbbq-site .kbbq-subhero p,
+  .kbbq-subhero p {
+    font-size: clamp(1.05rem, 1.55vw, 1.28rem) !important;
+    line-height: 1.75 !important;
+    max-width: 720px !important;
+  }
+}
