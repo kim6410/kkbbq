@@ -305,7 +305,17 @@ body {
     flex: 0 0 var(--float-size);
     font-size: 11px;
     box-shadow: 7px 9px 18px rgba(24, 12, 6, 0.26), inset 0 1px 0 rgba(255,255,255,0.32);
+    border-color: rgba(255,255,255,0.14);
   }
+
+  .kbbq-float .call { background: linear-gradient(135deg, rgba(110, 255, 243, 0.56), rgba(38, 179, 224, 0.34)); }
+  .kbbq-float .booking { background: linear-gradient(135deg, rgba(255, 194, 102, 0.56), rgba(255, 127, 41, 0.34)); }
+  .kbbq-float .place,
+  .kbbq-float .blog { background: linear-gradient(135deg, rgba(54, 244, 124, 0.54), rgba(18, 174, 78, 0.34)); }
+  .kbbq-float .tmap { background: linear-gradient(135deg, rgba(92, 175, 255, 0.54), rgba(36, 115, 240, 0.34)); }
+  .kbbq-float .instagram { background: linear-gradient(135deg, rgba(208, 112, 104, 0.54), rgba(138, 55, 48, 0.34)); }
+  .kbbq-float .translate { background: linear-gradient(135deg, rgba(106, 244, 255, 0.54), rgba(48, 122, 255, 0.34)); }
+  .kbbq-float .top { background: linear-gradient(135deg, rgba(136, 92, 54, 0.54), rgba(73, 41, 21, 0.34)); }
 
   .kbbq-translate-box {
     border-radius: 18px;
