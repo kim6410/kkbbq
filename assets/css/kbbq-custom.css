@@ -18,6 +18,109 @@
   --kbbq-radius: 26px;
 }
 
+/* =========================================================
+  KKBBQ FOOTER WORLD TIME COMPACT OVERRIDES (FINAL)
+========================================================= */
+
+.kbbq-footer .kbbq-worldtime {
+  width: min(100%, 1240px) !important;
+  margin: 0 auto !important;
+  padding: 1rem 1rem 1.1rem !important;
+}
+
+.kbbq-footer .kbbq-worldtime__head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+}
+
+.kbbq-footer .kbbq-worldtime__grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.kbbq-footer .kbbq-worldtime__card {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.45rem !important;
+  min-height: 162px !important;
+  padding: 0.9rem 0.95rem 0.85rem !important;
+  border-radius: 18px !important;
+}
+
+.kbbq-footer .kbbq-worldtime__weather {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.12rem !important;
+  margin-top: auto !important;
+}
+
+.kbbq-footer .kbbq-worldtime__weather-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+}
+
+.kbbq-footer .kbbq-worldtime__weather-temp {
+  font-weight: 700 !important;
+}
+
+.kbbq-footer .kbbq-worldtime__weather-humidity {
+  font-size: 0.9rem !important;
+  opacity: 0.86 !important;
+}
+
+.kbbq-footer .kbbq-worldtime__time {
+  font-size: 1.02rem !important;
+  line-height: 1.05 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.kbbq-footer .kbbq-worldtime__date {
+  font-size: 0.84rem !important;
+  opacity: 0.82 !important;
+}
+
+@media screen and (max-width: 980px) {
+  .kbbq-footer .kbbq-worldtime {
+    padding: 0.9rem 0.8rem 1rem !important;
+  }
+
+  .kbbq-footer .kbbq-worldtime__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .kbbq-footer .kbbq-worldtime__card {
+    min-height: 138px !important;
+    padding: 0.78rem 0.78rem 0.72rem !important;
+    gap: 0.38rem !important;
+  }
+
+  .kbbq-footer .kbbq-worldtime__weather-row {
+    font-size: 0.88rem !important;
+  }
+
+  .kbbq-footer .kbbq-worldtime__weather-humidity {
+    font-size: 0.84rem !important;
+  }
+
+  .kbbq-footer .kbbq-worldtime__time {
+    font-size: 0.94rem !important;
+  }
+
+  .kbbq-footer .kbbq-worldtime__date {
+    font-size: 0.8rem !important;
+  }
+}
+
 @media screen and (max-width: 980px) {
   body.kbbq-site .kbbq-header,
   .kbbq-header {
@@ -3636,5 +3739,143 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   body.kbbq-site .kbbq-subhero .kbbq-hero-bg.is-active,
   .kbbq-subhero .kbbq-hero-bg.is-active {
     opacity: 1 !important;
+  }
+}
+/* =========================================================
+  KKBBQ FOOTER WORLD TIME COMPACT OVERRIDES
+========================================================= */
+
+.kbbq-footer .kbbq-worldtime {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  padding: 1rem 1rem 1.1rem;
+}
+
+.kbbq-footer .kbbq-worldtime__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.kbbq-footer .kbbq-worldtime__head strong {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.kbbq-footer .kbbq-worldtime__live {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  opacity: 0.9;
+}
+
+.kbbq-footer .kbbq-worldtime__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+  gap: 10px;
+}
+
+.kbbq-footer .kbbq-worldtime__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-height: 162px;
+  padding: 0.9rem 0.95rem 0.85rem;
+  border-radius: 18px;
+}
+
+.kbbq-footer .kbbq-worldtime__city {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.kbbq-footer .kbbq-worldtime__city strong {
+  font-size: 1.02rem;
+  line-height: 1.1;
+}
+
+.kbbq-footer .kbbq-worldtime__city span {
+  font-size: 0.84rem;
+  opacity: 0.84;
+}
+
+.kbbq-footer .kbbq-worldtime__weather {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin-top: auto;
+}
+
+.kbbq-footer .kbbq-worldtime__weather-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.kbbq-footer .kbbq-worldtime__weather-temp {
+  font-weight: 700;
+}
+
+.kbbq-footer .kbbq-worldtime__weather-humidity {
+  font-size: 0.9rem;
+  opacity: 0.86;
+}
+
+.kbbq-footer .kbbq-worldtime__time {
+  font-size: 1.02rem;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.kbbq-footer .kbbq-worldtime__date {
+  font-size: 0.84rem;
+  opacity: 0.82;
+}
+
+@media screen and (max-width: 980px) {
+  .kbbq-footer .kbbq-worldtime {
+    padding: 0.9rem 0.8rem 1rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .kbbq-footer .kbbq-worldtime__card {
+    min-height: 138px;
+    padding: 0.78rem 0.78rem 0.72rem;
+    gap: 0.38rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__city strong {
+    font-size: 0.96rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__city span {
+    font-size: 0.8rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__weather-row {
+    font-size: 0.88rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__weather-humidity {
+    font-size: 0.84rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__time {
+    font-size: 0.94rem;
+  }
+
+  .kbbq-footer .kbbq-worldtime__date {
+    font-size: 0.8rem;
   }
 }

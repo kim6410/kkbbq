@@ -804,20 +804,90 @@ body {
 
 @media (max-width: 480px) {
   .kbbq-translate-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .kbbq-translate-grid button {
-    min-height: 160px !important;
+    min-height: 112px !important;
   }
 
   .kbbq-translate-grid button .kbbq-lang-flag,
   .kbbq-translate-grid button .kbbq-lang-flag-img {
-    width: 72px !important;
+    width: 64px !important;
     height: 64px !important;
   }
 
   .kbbq-translate-grid button .kbbq-lang-name {
     font-size: 1rem !important;
+  }
+}
+
+/* 언어 팝업은 다시 국기 + 언어명만 남기고 간결하게 유지 */
+.kbbq-translate-box {
+  width: min(92vw, 560px) !important;
+}
+
+.kbbq-translate-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.kbbq-translate-grid button {
+  min-height: 132px !important;
+  padding: 10px 8px 12px !important;
+  gap: 4px !important;
+}
+
+.kbbq-translate-grid button .kbbq-lang-weather,
+.kbbq-translate-grid button .kbbq-lang-weather-row,
+.kbbq-translate-grid button .kbbq-lang-weather-icon,
+.kbbq-translate-grid button .kbbq-lang-weather-temp,
+.kbbq-translate-grid button .kbbq-lang-weather-humidity {
+  display: none !important;
+}
+
+.kbbq-translate-grid button .kbbq-lang-flag,
+.kbbq-translate-grid button .kbbq-lang-flag-img {
+  width: 72px !important;
+  height: 72px !important;
+}
+
+.kbbq-translate-grid button .kbbq-lang-name {
+  font-size: 1.12rem !important;
+}
+
+@media (max-width: 768px) {
+  .kbbq-translate-box {
+    width: min(94vw, 560px) !important;
+  }
+
+  .kbbq-translate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 118px !important;
+    padding: 9px 8px 10px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 1.04rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .kbbq-translate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 112px !important;
   }
 }

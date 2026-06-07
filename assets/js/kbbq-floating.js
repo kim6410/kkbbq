@@ -32,19 +32,43 @@
     { code: "hi", label: "Hindi", flag: "🇮🇳", flagImg: "https://flagcdn.com/w160/in.png" },
   ]);
 
-  const KBBQ_WEATHER = Object.freeze({
-    icon: "☀️",
-    temp: "26℃",
-    humidity: "58%",
+  const KBBQ_WORLD_WEATHER = Object.freeze({
+    default: {
+      icon: "☀️",
+      temp: "26℃",
+      humidity: "58%",
+    },
+    cities: {
+      seoul: { icon: "☀️", temp: "26℃", humidity: "58%" },
+      tokyo: { icon: "☀️", temp: "26℃", humidity: "58%" },
+      shanghai: { icon: "☀️", temp: "27℃", humidity: "61%" },
+      bangkok: { icon: "⛅", temp: "31℃", humidity: "67%" },
+      hanoi: { icon: "☀️", temp: "29℃", humidity: "64%" },
+      newdelhi: { icon: "☀️", temp: "34℃", humidity: "44%" },
+      moscow: { icon: "🌥️", temp: "18℃", humidity: "52%" },
+      newyork: { icon: "☀️", temp: "24℃", humidity: "55%" },
+      london: { icon: "🌦️", temp: "20℃", humidity: "68%" },
+      paris: { icon: "⛅", temp: "22℃", humidity: "57%" },
+      berlin: { icon: "🌤️", temp: "21℃", humidity: "53%" },
+      riyadh: { icon: "☀️", temp: "39℃", humidity: "28%" },
+    },
   });
 
-  window.KBBQ_WEATHER = KBBQ_WEATHER;
+  window.KBBQ_WORLD_WEATHER = KBBQ_WORLD_WEATHER;
 
   const KBBQ_WORLD_TIME = Object.freeze([
-    { city: "Seoul", zone: "Asia/Seoul", label: "Korea" },
-    { city: "Tokyo", zone: "Asia/Tokyo", label: "Japan" },
-    { city: "London", zone: "Europe/London", label: "UK" },
-    { city: "New York", zone: "America/New_York", label: "USA" },
+    { key: "seoul", city: "Seoul", zone: "Asia/Seoul", label: "Korea" },
+    { key: "tokyo", city: "Tokyo", zone: "Asia/Tokyo", label: "Japan" },
+    { key: "shanghai", city: "Shanghai", zone: "Asia/Shanghai", label: "China" },
+    { key: "bangkok", city: "Bangkok", zone: "Asia/Bangkok", label: "Thailand" },
+    { key: "hanoi", city: "Hanoi", zone: "Asia/Bangkok", label: "Vietnam" },
+    { key: "newdelhi", city: "New Delhi", zone: "Asia/Kolkata", label: "India" },
+    { key: "moscow", city: "Moscow", zone: "Europe/Moscow", label: "Russia" },
+    { key: "newyork", city: "New York", zone: "America/New_York", label: "USA" },
+    { key: "london", city: "London", zone: "Europe/London", label: "UK" },
+    { key: "paris", city: "Paris", zone: "Europe/Paris", label: "France" },
+    { key: "berlin", city: "Berlin", zone: "Europe/Berlin", label: "Germany" },
+    { key: "riyadh", city: "Riyadh", zone: "Asia/Riyadh", label: "Saudi Arabia" },
   ]);
 
   const LANG_KEY = "kbbq_lang";
@@ -135,6 +159,10 @@
     }
   }
 
+  function getWorldWeather(cityKey) {
+    return KBBQ_WORLD_WEATHER.cities[cityKey] || KBBQ_WORLD_WEATHER.default;
+  }
+
   function buildWorldTimeFooter() {
     if (document.querySelector("[data-kbbq-worldtime]")) return;
 
@@ -155,10 +183,17 @@
       <div class="kbbq-worldtime__grid">
         ${KBBQ_WORLD_TIME.map(
           (city) => `
-            <article class="kbbq-worldtime__card" data-world-city="${escapeHtml(city.city)}" data-world-zone="${escapeHtml(city.zone)}">
+            <article class="kbbq-worldtime__card" data-world-city="${escapeHtml(city.city)}" data-world-zone="${escapeHtml(city.zone)}" data-world-weather="${escapeHtml(city.key)}">
               <div class="kbbq-worldtime__city">
                 <strong>${escapeHtml(city.city)}</strong>
                 <span>${escapeHtml(city.label)}</span>
+              </div>
+              <div class="kbbq-worldtime__weather" aria-hidden="true">
+                <span class="kbbq-worldtime__weather-row">
+                  <span class="kbbq-worldtime__weather-icon"></span>
+                  <span class="kbbq-worldtime__weather-temp"></span>
+                </span>
+                <span class="kbbq-worldtime__weather-humidity"></span>
               </div>
               <div class="kbbq-worldtime__time" data-world-time>--:--:--</div>
               <div class="kbbq-worldtime__date" data-world-date>---</div>
@@ -178,8 +213,16 @@
     const now = new Date();
     root.querySelectorAll("[data-world-city]").forEach((card) => {
       const zone = card.getAttribute("data-world-zone");
+      const weatherKey = card.getAttribute("data-world-weather");
+      const weather = getWorldWeather(weatherKey);
       const timeEl = card.querySelector("[data-world-time]");
       const dateEl = card.querySelector("[data-world-date]");
+      const weatherIconEl = card.querySelector(".kbbq-worldtime__weather-icon");
+      const weatherTempEl = card.querySelector(".kbbq-worldtime__weather-temp");
+      const weatherHumidityEl = card.querySelector(".kbbq-worldtime__weather-humidity");
+      if (weatherIconEl) weatherIconEl.textContent = weather.icon;
+      if (weatherTempEl) weatherTempEl.textContent = weather.temp;
+      if (weatherHumidityEl) weatherHumidityEl.textContent = `💧 ${weather.humidity}`;
       if (timeEl) timeEl.textContent = formatWorldTime(now, zone);
       if (dateEl) dateEl.textContent = formatWorldDate(now, zone);
     });
@@ -248,16 +291,9 @@
             <button type="button" data-kbbq-lang="${lang.code}">
               <span class="kbbq-lang-flag" aria-hidden="true">
                 <img class="kbbq-lang-flag-img" src="${escapeHtml(lang.flagImg)}" alt="" loading="lazy">
-                <span class="kbbq-lang-flag-emoji">${lang.flag}</span>
+              <span class="kbbq-lang-flag-emoji">${lang.flag}</span>
               </span>
               <span class="kbbq-lang-name">${lang.label}</span>
-              <span class="kbbq-lang-weather" aria-hidden="true">
-                <span class="kbbq-lang-weather-row">
-                  <span class="kbbq-lang-weather-icon">${KBBQ_WEATHER.icon}</span>
-                  <span class="kbbq-lang-weather-temp">${KBBQ_WEATHER.temp}</span>
-                </span>
-                <span class="kbbq-lang-weather-humidity">💧 ${KBBQ_WEATHER.humidity}</span>
-              </span>
             </button>
           `).join("")}
         </div>
@@ -286,14 +322,8 @@
       const lang = btn.getAttribute("data-kbbq-lang");
       const meta = getLanguageMeta(lang);
       const isActive = lang === currentLang;
-      btn.setAttribute(
-        "aria-label",
-        `${meta.flag} ${meta.label} - ${KBBQ_WEATHER.icon} ${KBBQ_WEATHER.temp} ${KBBQ_WEATHER.humidity}`
-      );
-      btn.setAttribute(
-        "title",
-        `${meta.flag} ${meta.label} - ${KBBQ_WEATHER.icon} ${KBBQ_WEATHER.temp} ${KBBQ_WEATHER.humidity}`
-      );
+      btn.setAttribute("aria-label", `${meta.flag} ${meta.label}`);
+      btn.setAttribute("title", `${meta.flag} ${meta.label}`);
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
       btn.classList.toggle("is-active", isActive);
     });
@@ -636,4 +666,71 @@
     restoreLanguage(currentLang);
     startWorldTimeFooter();
   });
+  function buildWorldTimeFooter() {
+    if (document.querySelector("[data-kbbq-worldtime]")) return;
+
+    const footer = document.querySelector(".kbbq-footer");
+    if (!footer) return;
+
+    const section = document.createElement("section");
+    section.className = "kbbq-worldtime";
+    section.setAttribute("data-kbbq-worldtime", "true");
+    section.setAttribute("aria-label", "World Time");
+    section.innerHTML = `
+      <div class="kbbq-worldtime__head">
+        <div>
+          <strong>World Time</strong>
+        </div>
+        <span class="kbbq-worldtime__live">LIVE</span>
+      </div>
+      <div class="kbbq-worldtime__grid">
+        ${KBBQ_WORLD_TIME.map((city) => {
+          const weather = getWorldWeather(city.key);
+          return `
+            <article class="kbbq-worldtime__card" data-world-city="${escapeHtml(city.city)}" data-world-zone="${escapeHtml(city.zone)}" data-world-weather="${escapeHtml(city.key)}">
+              <div class="kbbq-worldtime__city">
+                <strong>${escapeHtml(city.city)}</strong>
+                <span>${escapeHtml(city.label)}</span>
+              </div>
+              <div class="kbbq-worldtime__weather" aria-hidden="true">
+                <span class="kbbq-worldtime__weather-row">
+                  <span class="kbbq-worldtime__weather-icon">${escapeHtml(weather.icon)}</span>
+                  <span class="kbbq-worldtime__weather-temp">${escapeHtml(weather.temp)}</span>
+                </span>
+                <span class="kbbq-worldtime__weather-humidity">💧 ${escapeHtml(weather.humidity)}</span>
+              </div>
+              <div class="kbbq-worldtime__time" data-world-time>--:--:--</div>
+              <div class="kbbq-worldtime__date" data-world-date>---</div>
+            </article>
+          `;
+        }).join("")}
+      </div>
+    `;
+
+    footer.appendChild(section);
+  }
+
+  function updateWorldTimeFooter() {
+    const root = document.querySelector("[data-kbbq-worldtime]");
+    if (!root) return;
+
+    const now = new Date();
+    root.querySelectorAll("[data-world-city]").forEach((card) => {
+      const zone = card.getAttribute("data-world-zone");
+      const weatherKey = card.getAttribute("data-world-weather");
+      const weather = getWorldWeather(weatherKey);
+      const timeEl = card.querySelector("[data-world-time]");
+      const dateEl = card.querySelector("[data-world-date]");
+      const weatherIconEl = card.querySelector(".kbbq-worldtime__weather-icon");
+      const weatherTempEl = card.querySelector(".kbbq-worldtime__weather-temp");
+      const weatherHumidityEl = card.querySelector(".kbbq-worldtime__weather-humidity");
+
+      if (timeEl) timeEl.textContent = formatWorldTime(now, zone);
+      if (dateEl) dateEl.textContent = formatWorldDate(now, zone);
+      if (weatherIconEl) weatherIconEl.textContent = weather.icon;
+      if (weatherTempEl) weatherTempEl.textContent = weather.temp;
+      if (weatherHumidityEl) weatherHumidityEl.textContent = `💧 ${weather.humidity}`;
+    });
+  }
+
 })();
