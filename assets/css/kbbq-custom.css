@@ -3342,9 +3342,18 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-subhero .kbbq-hero-bg::after {
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.018) 0%,
-      rgba(0, 0, 0, 0.035) 55%,
-      rgba(0, 0, 0, 0.055) 100%
+      rgba(0, 0, 0, 0.010) 0%,
+      rgba(0, 0, 0, 0.020) 55%,
+      rgba(0, 0, 0, 0.030) 100%
     ) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg,
+  .kbbq-hero-bg,
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg,
+  .kbbq-subhero .kbbq-hero-bg {
+    animation: kbbqHeroZoom 7s ease-in-out infinite alternate !important;
+    transform-origin: center center !important;
+    will-change: transform, opacity !important;
   }
 }
