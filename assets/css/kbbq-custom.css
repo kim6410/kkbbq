@@ -2614,3 +2614,72 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     padding-top: calc(var(--kbbq-header-h) + 20px) !important;
   }
 }
+
+/* =========================================================
+   KBBQ 모바일 로고 크기 최종 보정 v3
+   - 모바일 상단 '강경숯불바베큐 KKBBQ'가 작아 보이는 문제 해결
+   - 기존 모바일 로고 기준 약 50% 확대
+   - 전화번호 버튼은 기존처럼 모바일에서 숨김 유지
+   - HTML 수정 없이 assets/css/kbbq-custom.css 하나만 교체하면 적용
+========================================================= */
+@media screen and (max-width: 1180px) {
+  :root {
+    --kbbq-header-h: 92px !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.46rem !important;
+    width: 100% !important;
+    font-size: 1.62rem !important;
+    line-height: 1.05 !important;
+    margin: 0 0 0.34rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo small,
+  .kbbq-header .kbbq-logo small {
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0.99rem !important;
+    line-height: 1 !important;
+    letter-spacing: 0.12em !important;
+    margin: 0 !important;
+    transform: translateY(0.03em) !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  :root {
+    --kbbq-header-h: 90px !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    font-size: 1.5rem !important;
+    gap: 0.42rem !important;
+    margin-bottom: 0.32rem !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo small,
+  .kbbq-header .kbbq-logo small {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  body.kbbq-site .kbbq-header .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    font-size: 1.42rem !important;
+    gap: 0.36rem !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo small,
+  .kbbq-header .kbbq-logo small {
+    font-size: 0.84rem !important;
+  }
+}
