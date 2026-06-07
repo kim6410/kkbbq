@@ -4184,7 +4184,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
 
 @media screen and (max-width: 980px) {
   .kbbq-footer .kbbq-worldtime__card {
-    min-height: 96px !important;
+    min-height: 88px !important;
     padding-left: 0.34rem !important;
     padding-right: 0.34rem !important;
   }
@@ -4200,5 +4200,32 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-footer .kbbq-worldtime__date,
   .kbbq-footer .kbbq-world-date {
     letter-spacing: 0 !important;
+  }
+}
+
+/* =========================================================
+  KKBBQ FOOTER WORLD TIME CENTER ALIGN TIGHTENING
+========================================================= */
+
+.kbbq-footer .kbbq-worldtime__card {
+  min-height: 108px !important;
+  justify-content: center !important;
+  padding-top: 0.56rem !important;
+  padding-bottom: 0.56rem !important;
+}
+
+.kbbq-footer .kbbq-worldtime__weather {
+  margin-top: 0 !important;
+}
+
+.kbbq-footer .kbbq-worldtime__clock {
+  margin-top: 0 !important;
+}
+
+@media screen and (max-width: 980px) {
+  .kbbq-footer .kbbq-worldtime__card {
+    min-height: 84px !important;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
   }
 }
