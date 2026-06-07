@@ -61,7 +61,7 @@
     { key: "tokyo", city: "Tokyo", zone: "Asia/Tokyo", label: "Japan" },
     { key: "shanghai", city: "Shanghai", zone: "Asia/Shanghai", label: "China" },
     { key: "bangkok", city: "Bangkok", zone: "Asia/Bangkok", label: "Thailand" },
-    { key: "hanoi", city: "Hanoi", zone: "Asia/Bangkok", label: "Vietnam" },
+    { key: "hanoi", city: "Hanoi", zone: "Asia/Ho_Chi_Minh", label: "Vietnam" },
     { key: "newdelhi", city: "New Delhi", zone: "Asia/Kolkata", label: "India" },
     { key: "moscow", city: "Moscow", zone: "Europe/Moscow", label: "Russia" },
     { key: "newyork", city: "New York", zone: "America/New_York", label: "USA" },
