@@ -1131,7 +1131,7 @@ h3 {
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     gap: 0.28rem !important;
     overflow-x: auto !important;
     padding: 0 0 0.15rem !important;
@@ -1478,7 +1478,7 @@ h3 {
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     gap: 0.28rem !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
@@ -1497,12 +1497,12 @@ h3 {
   .kbbq-site .kbbq-nav a,
   .kbbq-header .kbbq-nav a {
     flex: 0 0 auto !important;
-    height: 30px !important;
-    min-height: 30px !important;
-    padding: 0 0.62rem !important;
-    font-size: 0.9rem !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 0.58rem !important;
+    font-size: 0.84rem !important;
     font-weight: 850 !important;
-    line-height: 30px !important;
+    line-height: 28px !important;
     border-radius: 999px !important;
     background: rgba(255, 255, 255, 0.07) !important;
     color: rgba(255, 255, 255, 0.9) !important;
@@ -1549,44 +1549,161 @@ h3 {
     height: 27px !important;
     min-height: 27px !important;
     line-height: 27px !important;
-    font-size: 0.875rem !important;
-    padding: 0 0.54rem !important;
+    font-size: 0.81rem !important;
+    padding: 0 0.5rem !important;
   }
 }
 
-
 /* =========================================================
-   KBBQ 모바일 메뉴 가독성 보정 최종 잠금
-   - 메뉴 5개 중앙 정렬
-   - 기존보다 약 1px 크게 조정
+   KBBQ 모바일 헤더 고정 + 메뉴 중앙정렬 + 메뉴 글자 +1px 최종 잠금
+   중요: 이 블록은 반드시 CSS 파일의 가장 마지막에 있어야 합니다.
 ========================================================= */
 @media screen and (max-width: 1180px) {
+  :root {
+    --kbbq-header-h: 82px !important;
+  }
+
+  html,
+  body,
+  body.kbbq-site {
+    overflow-x: hidden !important;
+  }
+
+  body.kbbq-site {
+    padding-top: var(--kbbq-header-h) !important;
+    padding-bottom: 0 !important;
+  }
+
+  body.kbbq-site .kbbq-header,
+  .kbbq-site .kbbq-header,
+  header.kbbq-header,
+  .kbbq-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    z-index: 2147483000 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    display: block !important;
+    padding: 0.48rem 0.75rem 0.42rem !important;
+    margin: 0 !important;
+    background: rgba(19, 12, 8, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+  }
+
+  body.kbbq-site .kbbq-logo,
+  .kbbq-site .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    font-size: 1.08rem !important;
+    line-height: 1.15 !important;
+    margin: 0 0 0.28rem !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  body.kbbq-site .kbbq-logo small,
+  .kbbq-site .kbbq-logo small,
+  .kbbq-header .kbbq-logo small {
+    font-size: 0.66rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.1em !important;
+    margin-top: 0.05rem !important;
+  }
+
   body.kbbq-site .kbbq-nav,
   .kbbq-site .kbbq-nav,
   .kbbq-header .kbbq-nav {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: center !important;
+    gap: 0.3rem !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 0 0 0.12rem !important;
     text-align: center !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.kbbq-site .kbbq-nav::-webkit-scrollbar,
+  .kbbq-site .kbbq-nav::-webkit-scrollbar,
+  .kbbq-header .kbbq-nav::-webkit-scrollbar {
+    display: none !important;
   }
 
   body.kbbq-site .kbbq-nav a,
   .kbbq-site .kbbq-nav a,
   .kbbq-header .kbbq-nav a {
-    height: 30px !important;
-    min-height: 30px !important;
-    line-height: 30px !important;
-    font-size: 0.9rem !important;
-    padding: 0 0.62rem !important;
+    flex: 0 0 auto !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    line-height: 32px !important;
+    padding: 0 0.6rem !important;
+    font-size: 0.96rem !important;
+    font-weight: 900 !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.94) !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  body.kbbq-site .kbbq-nav a:first-child,
+  .kbbq-site .kbbq-nav a:first-child,
+  .kbbq-header .kbbq-nav a:first-child {
+    display: none !important;
+  }
+
+  body.kbbq-site .kbbq-call,
+  .kbbq-site .kbbq-call,
+  .kbbq-header .kbbq-call {
+    display: none !important;
+  }
+
+  body.kbbq-site .kbbq-bottom-cta,
+  .kbbq-site .kbbq-bottom-cta,
+  .kbbq-bottom-cta {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: auto !important;
   }
 }
 
 @media screen and (max-width: 420px) {
+  :root {
+    --kbbq-header-h: 80px !important;
+  }
+
+  body.kbbq-site .kbbq-nav,
+  .kbbq-site .kbbq-nav,
+  .kbbq-header .kbbq-nav {
+    justify-content: center !important;
+    gap: 0.24rem !important;
+  }
+
   body.kbbq-site .kbbq-nav a,
   .kbbq-site .kbbq-nav a,
   .kbbq-header .kbbq-nav a {
-    height: 29px !important;
-    min-height: 29px !important;
-    line-height: 29px !important;
-    font-size: 0.875rem !important;
-    padding: 0 0.54rem !important;
+    height: 31px !important;
+    min-height: 31px !important;
+    line-height: 31px !important;
+    font-size: 0.93rem !important;
+    padding: 0 0.5rem !important;
   }
 }
