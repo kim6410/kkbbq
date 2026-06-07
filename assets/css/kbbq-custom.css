@@ -3856,7 +3856,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   flex-wrap: nowrap !important;
   white-space: nowrap !important;
   line-height: 1.05 !important;
-  margin-top: auto !important;
+  margin-top: 0 !important;
 }
 
 .kbbq-footer .kbbq-worldtime__time,
@@ -3907,49 +3907,49 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   }
 
   .kbbq-footer .kbbq-worldtime__card {
-    min-height: 116px !important;
-    padding: 0.62rem 0.66rem 0.6rem !important;
-    gap: 0.28rem !important;
+    min-height: 104px !important;
+    padding: 0.54rem 0.58rem 0.52rem !important;
+    gap: 0.2rem !important;
     border-radius: 14px !important;
   }
 
   .kbbq-footer .kbbq-worldtime__city-name,
   .kbbq-footer .kbbq-world-city-name {
-    font-size: 0.9rem !important;
+    font-size: 0.84rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__country,
   .kbbq-footer .kbbq-world-country {
-    font-size: 0.76rem !important;
+    font-size: 0.7rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__weather,
   .kbbq-footer .kbbq-world-weather {
-    gap: 0.28rem !important;
-    font-size: 0.83rem !important;
+    gap: 0.2rem !important;
+    font-size: 0.74rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__weather-icon {
-    font-size: 0.92rem !important;
+    font-size: 0.84rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__weather-temp,
   .kbbq-footer .kbbq-worldtime__weather-humidity {
-    font-size: 0.82rem !important;
+    font-size: 0.74rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__clock {
-    gap: 0.28rem !important;
+    gap: 0.2rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__time,
   .kbbq-footer .kbbq-world-time {
-    font-size: 0.86rem !important;
+    font-size: 0.78rem !important;
   }
 
   .kbbq-footer .kbbq-worldtime__date,
   .kbbq-footer .kbbq-world-date {
-    font-size: 0.76rem !important;
+    font-size: 0.68rem !important;
   }
 }
 /* =========================================================
