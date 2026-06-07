@@ -2567,6 +2567,14 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   body.kbbq-site .kbbq-header .kbbq-call,
   .kbbq-header .kbbq-call {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
   }
 
   body.kbbq-site .kbbq-header .kbbq-nav,
@@ -2579,7 +2587,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     width: 100% !important;
     justify-content: center !important;
     overflow: visible !important;
-    gap: 0.22rem !important;
+    gap: 0.3rem !important;
     padding-top: 0.08rem !important;
   }
 
@@ -2595,7 +2603,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-header .kbbq-nav a,
   nav.kbbq-nav a {
     font-size: 1.12rem !important;
-    padding: 0 0.34rem !important;
+    padding: 0 0.46rem !important;
   }
 
   body.kbbq-site .kbbq-hero-inner,
