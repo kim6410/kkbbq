@@ -55,13 +55,40 @@
 }
 
 .kbbq-float .call { background: linear-gradient(135deg, #9c5a28, #5a3018); }
-.kbbq-float .booking { background: linear-gradient(135deg, #d9651a, #b93118); }
-.kbbq-float .place { background: linear-gradient(135deg, #03c75a, #087a3f); }
-.kbbq-float .tmap { background: linear-gradient(135deg, #2673d9, #123f92); }
-.kbbq-float .instagram { background: linear-gradient(135deg, #8b3a2f, #4a1e19); }
-.kbbq-float .blog { background: linear-gradient(135deg, #3f6d34, #23451d); }
-.kbbq-float .translate { background: linear-gradient(135deg, #b38b2a, #6c4a18); }
-.kbbq-float .top { background: linear-gradient(135deg, #4b2b19, #201009); }
+.kbbq-float .booking { background: linear-gradient(135deg, #cf6a21, #a64516); }
+.kbbq-float .place { background: linear-gradient(135deg, #14824b, #0e5d35); }
+.kbbq-float .tmap { background: linear-gradient(135deg, #2d5fa7, #173d73); }
+.kbbq-float .instagram { background: linear-gradient(135deg, #7b4b43, #41211c); }
+.kbbq-float .blog { background: linear-gradient(135deg, #315b2a, #20361d); }
+.kbbq-float .translate { background: linear-gradient(135deg, #3c4658, #1f2532); }
+.kbbq-float .top { background: linear-gradient(135deg, #4a3323, #24150d); }
+
+.kbbq-float .translate {
+  flex-direction: column;
+  gap: 0;
+}
+
+.kbbq-float .translate .kbbq-float-globe {
+  display: block;
+  font-size: 19px;
+  line-height: 1;
+  margin-bottom: 1px;
+}
+
+.kbbq-float .translate .kbbq-float-lang {
+  display: block;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  transform: translateY(-1px);
+}
+
+.kbbq-float .instagram svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  stroke: currentColor;
+}
 
 .kbbq-float-label {
   display: block;
@@ -88,12 +115,12 @@
 }
 
 .kbbq-translate-box {
-  width: min(92vw, 520px);
+  width: min(92vw, 560px);
   border-radius: 24px;
   padding: 18px;
-  background: rgba(44, 24, 12, 0.86);
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 24px 70px rgba(0,0,0,0.38);
+  background: rgba(28, 18, 12, 0.92);
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.44);
   color: #fff;
 }
 
@@ -128,19 +155,44 @@
 }
 
 .kbbq-translate-grid button {
-  min-height: 46px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.10);
+  min-height: 54px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
   color: #fff;
   font-weight: 800;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 8px;
+  text-align: center;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
 .kbbq-translate-grid button:hover {
   transform: translateY(-1px);
-  background: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.14);
+}
+
+.kbbq-translate-grid button.is-active,
+.kbbq-translate-grid button[aria-pressed="true"] {
+  background: rgba(217, 154, 50, 0.22);
+  border-color: rgba(217, 154, 50, 0.65);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.kbbq-translate-grid button .kbbq-lang-flag {
+  font-size: 1.12rem;
+  line-height: 1;
+}
+
+.kbbq-translate-grid button .kbbq-lang-name {
+  font-size: 0.9rem;
+  line-height: 1.05;
+  font-weight: 800;
 }
 
 .kbbq-translate-hint {
@@ -209,9 +261,15 @@ body {
   .kbbq-translate-box {
     border-radius: 18px;
     padding: 14px;
+    width: min(94vw, 420px);
   }
 
   .kbbq-translate-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 52px;
   }
 }
