@@ -196,11 +196,12 @@
 .kbbq-translate-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
 }
 
 .kbbq-translate-grid button {
-  min-height: 54px;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
   border: 1px solid rgba(255,255,255,0.16);
   border-radius: 16px;
   background: rgba(255,255,255,0.08);
@@ -212,7 +213,7 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
-  padding: 10px 8px;
+  padding: 8px 6px;
   text-align: center;
   transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
@@ -230,12 +231,12 @@
 }
 
 .kbbq-translate-grid button .kbbq-lang-flag {
-  font-size: 1.12rem;
+  font-size: 1.18rem;
   line-height: 1;
 }
 
 .kbbq-translate-grid button .kbbq-lang-name {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.05;
   font-weight: 800;
 }
@@ -306,15 +307,25 @@ body {
   .kbbq-translate-box {
     border-radius: 18px;
     padding: 14px;
-    width: min(94vw, 420px);
+    width: min(94vw, 460px);
   }
 
   .kbbq-translate-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .kbbq-translate-grid button {
-    min-height: 52px;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    padding: 6px 4px;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag {
+    font-size: 1.02rem;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 0.72rem;
   }
 }

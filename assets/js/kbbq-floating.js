@@ -20,7 +20,8 @@
     'zh-TW': { flag: '🇹🇼', label: 'Chinese TW' },
     vi: { flag: '🇻🇳', label: 'Vietnamese' },
     fr: { flag: '🇫🇷', label: 'French' },
-    id: { flag: '🇮🇩', label: 'Indonesian' }
+    id: { flag: '🇮🇩', label: 'Indonesian' },
+    es: { flag: '🇪🇸', label: 'Spanish' }
   };
 
   var TRANSLATE_BUTTON_HTML =
@@ -105,7 +106,7 @@
       new google.translate.TranslateElement(
         {
           pageLanguage: 'ko',
-          includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,fr,id',
+          includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,fr,id,es',
           autoDisplay: false
         },
         'kbbqGoogleTranslateElement'
