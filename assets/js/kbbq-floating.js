@@ -25,6 +25,13 @@
     { code: "es", label: "Spanish", flag: "🇪🇸", flagImg: "https://flagcdn.com/w160/es.png" },
   ]);
 
+  const KBBQ_WORLD_TIME = Object.freeze([
+    { city: "Seoul", zone: "Asia/Seoul", label: "Korea" },
+    { city: "Tokyo", zone: "Asia/Tokyo", label: "Japan" },
+    { city: "London", zone: "Europe/London", label: "UK" },
+    { city: "New York", zone: "America/New_York", label: "USA" },
+  ]);
+
   const LANG_KEY = "kbbq_lang";
   const mobileTapQuery = window.matchMedia("(max-width: 980px)");
   const hasVibrate = typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
@@ -84,6 +91,93 @@
     mount.setAttribute("aria-hidden", "true");
     mount.style.display = "none";
     document.body.appendChild(mount);
+  }
+
+  function formatWorldTime(date, timeZone) {
+    try {
+      return new Intl.DateTimeFormat("en-GB", {
+        timeZone,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      }).format(date);
+    } catch (error) {
+      return "--:--:--";
+    }
+  }
+
+  function formatWorldDate(date, timeZone) {
+    try {
+      return new Intl.DateTimeFormat("en-US", {
+        timeZone,
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      }).format(date);
+    } catch (error) {
+      return "--";
+    }
+  }
+
+  function buildWorldTimeFooter() {
+    if (document.querySelector("[data-kbbq-worldtime]")) return;
+
+    const footer = document.querySelector(".kbbq-footer");
+    if (!footer) return;
+
+    const section = document.createElement("section");
+    section.className = "kbbq-worldtime";
+    section.setAttribute("data-kbbq-worldtime", "true");
+    section.setAttribute("aria-label", "World Time");
+    section.innerHTML = `
+      <div class="kbbq-worldtime__head">
+        <div>
+          <strong>World Time</strong>
+          <span>주요 도시의 현재 시간을 푸터에서 바로 확인하세요.</span>
+        </div>
+        <span class="kbbq-worldtime__live">LIVE</span>
+      </div>
+      <div class="kbbq-worldtime__grid">
+        ${KBBQ_WORLD_TIME.map(
+          (city) => `
+            <article class="kbbq-worldtime__card" data-world-city="${escapeHtml(city.city)}" data-world-zone="${escapeHtml(city.zone)}">
+              <div class="kbbq-worldtime__city">
+                <strong>${escapeHtml(city.city)}</strong>
+                <span>${escapeHtml(city.label)}</span>
+              </div>
+              <div class="kbbq-worldtime__time" data-world-time>--:--:--</div>
+              <div class="kbbq-worldtime__date" data-world-date>---</div>
+            </article>
+          `
+        ).join("")}
+      </div>
+    `;
+
+    footer.appendChild(section);
+  }
+
+  function updateWorldTimeFooter() {
+    const root = document.querySelector("[data-kbbq-worldtime]");
+    if (!root) return;
+
+    const now = new Date();
+    root.querySelectorAll("[data-world-city]").forEach((card) => {
+      const zone = card.getAttribute("data-world-zone");
+      const timeEl = card.querySelector("[data-world-time]");
+      const dateEl = card.querySelector("[data-world-date]");
+      if (timeEl) timeEl.textContent = formatWorldTime(now, zone);
+      if (dateEl) dateEl.textContent = formatWorldDate(now, zone);
+    });
+  }
+
+  function startWorldTimeFooter() {
+    buildWorldTimeFooter();
+    updateWorldTimeFooter();
+
+    if (!window.__kbbqWorldTimeTimer) {
+      window.__kbbqWorldTimeTimer = window.setInterval(updateWorldTimeFooter, 1000);
+    }
   }
 
   function buildFloatingMarkup() {
@@ -498,6 +592,7 @@
     syncLanguageButtons();
     bindInteractions();
     restoreLanguage(getStoredLanguage());
+    startWorldTimeFooter();
   }
 
   if (document.readyState === "loading") {
@@ -512,5 +607,6 @@
     setFloatingDecorations();
     syncLanguageButtons();
     restoreLanguage(currentLang);
+    startWorldTimeFooter();
   });
 })();

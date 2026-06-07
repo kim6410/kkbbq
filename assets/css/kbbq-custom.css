@@ -2810,6 +2810,278 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     opacity: 1 !important;
   }
 }
+
+.kbbq-worldtime {
+  margin-top: 1.4rem;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border-radius: 24px;
+  background: rgba(255, 248, 238, 0.82);
+  border: 1px solid rgba(121, 68, 35, 0.14);
+  box-shadow: 0 18px 42px rgba(64, 36, 20, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.kbbq-worldtime__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kbbq-worldtime__head strong {
+  display: block;
+  color: rgba(82, 43, 19, 0.98);
+  font-size: 1.18rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.kbbq-worldtime__head span {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(82, 43, 19, 0.74);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.kbbq-worldtime__live {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  background: rgba(217, 101, 26, 0.16);
+  color: #8f4314;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+.kbbq-worldtime__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.95rem;
+}
+
+.kbbq-worldtime__card {
+  position: relative;
+  overflow: hidden;
+  padding: 0.95rem 0.95rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 247, 237, 0.94));
+  border: 1px solid rgba(121, 68, 35, 0.12);
+  box-shadow: 0 14px 30px rgba(64, 36, 20, 0.08);
+}
+
+.kbbq-worldtime__city {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.kbbq-worldtime__city strong {
+  color: rgba(82, 43, 19, 0.96);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.kbbq-worldtime__city span {
+  color: rgba(82, 43, 19, 0.62);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.kbbq-worldtime__time {
+  margin-top: 0.75rem;
+  color: rgba(82, 43, 19, 0.98);
+  font-size: 1.48rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.kbbq-worldtime__date {
+  margin-top: 0.35rem;
+  color: rgba(82, 43, 19, 0.72);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 980px) {
+  .kbbq-worldtime {
+    margin-top: 1rem;
+    padding: 0.95rem;
+    border-radius: 18px;
+  }
+
+  .kbbq-worldtime__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kbbq-worldtime__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .kbbq-worldtime__card {
+    padding: 0.88rem 0.82rem 0.9rem;
+    border-radius: 16px;
+  }
+
+  .kbbq-worldtime__time {
+    font-size: 1.28rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .kbbq-worldtime__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kbbq-worldtime {
+  margin-top: 1.4rem;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border-radius: 24px;
+  background: rgba(255, 248, 238, 0.82);
+  border: 1px solid rgba(121, 68, 35, 0.14);
+  box-shadow: 0 18px 42px rgba(64, 36, 20, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.kbbq-worldtime__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kbbq-worldtime__head strong {
+  display: block;
+  color: rgba(82, 43, 19, 0.98);
+  font-size: 1.18rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.kbbq-worldtime__head span {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(82, 43, 19, 0.74);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.kbbq-worldtime__live {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  background: rgba(217, 101, 26, 0.16);
+  color: #8f4314;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+.kbbq-worldtime__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.95rem;
+}
+
+.kbbq-worldtime__card {
+  position: relative;
+  overflow: hidden;
+  padding: 0.95rem 0.95rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 247, 237, 0.94));
+  border: 1px solid rgba(121, 68, 35, 0.12);
+  box-shadow: 0 14px 30px rgba(64, 36, 20, 0.08);
+}
+
+.kbbq-worldtime__city {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.kbbq-worldtime__city strong {
+  color: rgba(82, 43, 19, 0.96);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.kbbq-worldtime__city span {
+  color: rgba(82, 43, 19, 0.62);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.kbbq-worldtime__time {
+  margin-top: 0.75rem;
+  color: rgba(82, 43, 19, 0.98);
+  font-size: 1.48rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.kbbq-worldtime__date {
+  margin-top: 0.35rem;
+  color: rgba(82, 43, 19, 0.72);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 980px) {
+  .kbbq-worldtime {
+    margin-top: 1rem;
+    padding: 0.95rem;
+    border-radius: 18px;
+  }
+
+  .kbbq-worldtime__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kbbq-worldtime__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .kbbq-worldtime__card {
+    padding: 0.88rem 0.82rem 0.9rem;
+    border-radius: 16px;
+  }
+
+  .kbbq-worldtime__time {
+    font-size: 1.28rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .kbbq-worldtime__grid {
+    grid-template-columns: 1fr;
+  }
+}
 @media (min-width: 981px) {
   body.kbbq-site .kbbq-section,
   .kbbq-section {
