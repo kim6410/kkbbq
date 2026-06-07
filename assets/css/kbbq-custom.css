@@ -517,6 +517,9 @@ h3 {
   color: rgba(255, 255, 255, 0.84);
   font-size: 1.1rem;
 }
+.kbbq-subhero .kbbq-hero-bg {
+  display: none;
+}
 .kbbq-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1997,5 +2000,122 @@ h3 {
   .kbbq-hero h1,
   .kbbq-subhero h1 {
     font-size: 1.72rem !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero {
+    min-height: 72vh !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner {
+    padding-top: 5rem !important;
+    padding-bottom: 5.2rem !important;
+  }
+
+  body.kbbq-site .kbbq-hero::before,
+  .kbbq-hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 6, 3, 0.26),
+        rgba(10, 6, 3, 0.34)
+      ),
+      url("../../images/kbbq/garden-day.png") center/cover no-repeat !important;
+    filter: brightness(1.16) saturate(1.08) contrast(1.03) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg,
+  .kbbq-hero-bg {
+    filter: brightness(1.15) saturate(1.08) contrast(1.02) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg::after,
+  .kbbq-hero-bg::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 6, 3, 0.18),
+        rgba(10, 6, 3, 0.30)
+      ) !important;
+  }
+
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    min-height: 68vh !important;
+    display: flex !important;
+    align-items: center !important;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(17, 10, 6, 0.18),
+        rgba(17, 10, 6, 0.08)
+      ),
+      #0b0705 !important;
+  }
+
+  body.kbbq-site .kbbq-subhero::after,
+  .kbbq-subhero::after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 6, 3, 0.16),
+        rgba(10, 6, 3, 0.30)
+      ) !important;
+  }
+
+  body.kbbq-site .kbbq-subhero > .kbbq-wrap,
+  .kbbq-subhero > .kbbq-wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg,
+  .kbbq-subhero .kbbq-hero-bg {
+    display: block !important;
+    opacity: 0;
+    transform: scale(1.06);
+  }
+
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg.is-active,
+  .kbbq-subhero .kbbq-hero-bg.is-active {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg::after,
+  .kbbq-subhero .kbbq-hero-bg::after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 6, 3, 0.22) 0%,
+        rgba(10, 6, 3, 0.30) 48%,
+        rgba(10, 6, 3, 0.18) 100%
+      ) !important;
+  }
+
+  body.kbbq-site .kbbq-hero h1,
+  body.kbbq-site .kbbq-subhero h1,
+  .kbbq-hero h1,
+  .kbbq-subhero h1 {
+    font-size: clamp(2.1rem, 5.1vw, 3.2rem) !important;
+    line-height: 1.12 !important;
+    text-shadow: 0 14px 34px rgba(0, 0, 0, 0.42) !important;
+  }
+
+  body.kbbq-site .kbbq-hero .lead,
+  body.kbbq-site .kbbq-subhero p,
+  .kbbq-hero .lead,
+  .kbbq-subhero p {
+    font-size: clamp(1.02rem, 1.55vw, 1.2rem) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.42) !important;
   }
 }
