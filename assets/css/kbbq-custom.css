@@ -1053,3 +1053,197 @@ h3 {
     padding: 0 0.82rem;
   }
 }
+
+/* =========================================================
+   KBBQ 모바일 전용 컴팩트 패치
+   목적:
+   1. 모바일에서 헤더 고정 해제
+   2. 모바일에서 하단 고정 CTA 해제
+   3. 모바일 메뉴에서 '홈' 버튼 숨김
+   4. H1과 전체 폰트 크기 축소
+   5. 화면 안에 콘텐츠가 더 많이 보이도록 여백 축소
+========================================================= */
+
+@media (max-width: 640px) {
+
+  :root {
+    --kbbq-header-h: auto !important;
+  }
+
+  body.kbbq-site {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.62 !important;
+  }
+
+  .kbbq-header {
+    position: static !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    display: block !important;
+    padding: 0.55rem 0.75rem 0.45rem !important;
+    background: rgba(19, 12, 8, 0.96) !important;
+    backdrop-filter: none !important;
+  }
+
+  .kbbq-logo {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 1.08rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .kbbq-logo small {
+    font-size: 0.66rem !important;
+    letter-spacing: 0.1em !important;
+    margin-top: 0.05rem !important;
+  }
+
+  .kbbq-nav {
+    width: 100% !important;
+    margin: 0 !important;
+    display: flex !important;
+    gap: 0.28rem !important;
+    overflow-x: auto !important;
+    padding: 0 0 0.12rem !important;
+    scrollbar-width: none;
+  }
+
+  .kbbq-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .kbbq-nav a {
+    flex: 0 0 auto !important;
+    height: 30px !important;
+    padding: 0 0.58rem !important;
+    font-size: 0.88rem !important;
+    font-weight: 850 !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+  }
+
+  .kbbq-nav a:first-child {
+    display: none !important;
+  }
+
+  .kbbq-call {
+    position: static !important;
+    display: none !important;
+  }
+
+  .kbbq-bottom-cta {
+    position: static !important;
+    display: flex !important;
+    padding: 0.42rem !important;
+    gap: 0.38rem !important;
+    background: #130c08 !important;
+    backdrop-filter: none !important;
+  }
+
+  .kbbq-bottom-cta a {
+    min-height: 38px !important;
+    font-size: 0.82rem !important;
+    border-radius: 14px !important;
+  }
+
+  .kbbq-hero {
+    min-height: auto !important;
+  }
+
+  .kbbq-hero-inner {
+    padding: 2.6rem 0 2.8rem !important;
+  }
+
+  .kbbq-hero h1,
+  .kbbq-subhero h1 {
+    font-size: 1.82rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.06em !important;
+    margin-bottom: 0.7rem !important;
+  }
+
+  .kbbq-hero p,
+  .kbbq-subhero p {
+    font-size: 0.94rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .kbbq-section {
+    padding: 2.35rem 0 !important;
+  }
+
+  .kbbq-section-title {
+    margin-bottom: 1.2rem !important;
+  }
+
+  .kbbq-section-title h2 {
+    font-size: 1.48rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .kbbq-section-title p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .kbbq-wrap,
+  .kbbq-hero-inner {
+    width: min(100% - 22px, 1120px) !important;
+  }
+
+  .kbbq-card,
+  .kbbq-menu-card,
+  .kbbq-info-card,
+  .kbbq-channel,
+  .kbbq-cta {
+    border-radius: 18px !important;
+    padding: 1rem !important;
+  }
+
+  .kbbq-card h3,
+  .kbbq-menu-card h3,
+  .kbbq-info-card h3 {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .kbbq-card p,
+  .kbbq-menu-card p,
+  .kbbq-info-card p,
+  .kbbq-channel p {
+    font-size: 0.9rem !important;
+    line-height: 1.58 !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .kbbq-actions {
+    gap: 0.45rem !important;
+  }
+
+  .kbbq-btn {
+    min-height: 40px !important;
+    font-size: 0.88rem !important;
+    border-radius: 14px !important;
+    padding: 0.55rem 0.8rem !important;
+  }
+
+  .kbbq-footer {
+    padding: 2rem 0 1.2rem !important;
+  }
+
+  .kbbq-footer-grid {
+    gap: 0.6rem !important;
+  }
+
+  .kbbq-footer p,
+  .kbbq-footer li,
+  .kbbq-footer a {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+  }
+}
