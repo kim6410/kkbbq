@@ -2361,30 +2361,35 @@ h3 {
 
 @media screen and (max-width: 980px) {
   :root {
-    --kbbq-header-h: 80px;
+    --kbbq-header-h: 78px;
   }
 
   body.kbbq-site .kbbq-header,
   .kbbq-header {
-    display: flex !important;
-    min-height: 80px !important;
-    padding: 0.28rem 0.82rem 0.22rem !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+      "logo call"
+      "nav nav" !important;
     align-items: center !important;
-    align-content: flex-start !important;
-    justify-content: flex-start !important;
-    gap: 0.18rem 0.42rem !important;
-    flex-wrap: wrap !important;
+    align-content: start !important;
+    min-height: 78px !important;
+    padding: 0.28rem 0.72rem 0.2rem !important;
+    column-gap: 0.42rem !important;
+    row-gap: 0.1rem !important;
   }
 
   body.kbbq-site .kbbq-header .kbbq-logo,
   .kbbq-header .kbbq-logo {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.42rem !important;
-    flex: 0 1 auto !important;
+    justify-self: start !important;
+    grid-area: logo !important;
+    gap: 0.5rem !important;
+    flex: 0 0 auto !important;
     width: auto !important;
     min-width: 0 !important;
-    max-width: calc(100% - 118px) !important;
+    max-width: calc(100% - 108px) !important;
     margin: 0 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -2406,9 +2411,10 @@ h3 {
     visibility: visible !important;
     opacity: 1 !important;
     position: static !important;
-    order: 2 !important;
+    grid-area: call !important;
     flex: 0 0 auto !important;
-    margin-left: auto !important;
+    justify-self: end !important;
+    margin-left: 0 !important;
     height: 32px !important;
     padding: 0 0.66rem !important;
     font-size: 0.72rem !important;
@@ -2419,17 +2425,19 @@ h3 {
   body.kbbq-site .kbbq-header .kbbq-nav,
   .kbbq-header .kbbq-nav,
   nav.kbbq-nav {
-    order: 3 !important;
+    grid-area: nav !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 0 !important;
-    padding: 0.06rem 0 0 !important;
+    padding: 0.02rem 0 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.08rem !important;
+    gap: 0.06rem !important;
     overflow: visible !important;
     white-space: nowrap !important;
     flex-wrap: nowrap !important;
+    box-sizing: border-box !important;
   }
 
   body.kbbq-site .kbbq-header .kbbq-nav a,
@@ -2437,12 +2445,12 @@ h3 {
   nav.kbbq-nav a {
     flex: 0 0 auto !important;
     display: inline-flex !important;
-    height: 24px !important;
-    min-height: 24px !important;
-    line-height: 24px !important;
-    padding: 0 0.22rem !important;
-    font-size: 0.68rem !important;
-    font-weight: 850 !important;
+    height: 26px !important;
+    min-height: 26px !important;
+    line-height: 26px !important;
+    padding: 0 0.18rem !important;
+    font-size: 0.98rem !important;
+    font-weight: 900 !important;
   }
 
   body.kbbq-site .kbbq-nav a:first-child,
@@ -2463,8 +2471,37 @@ h3 {
   body.kbbq-site .kbbq-subhero > .kbbq-wrap,
   .kbbq-subhero > .kbbq-wrap,
   body.kbbq-site .kbbq-subhero .kbbq-wrap {
-    padding-top: calc(var(--kbbq-header-h) + 28px) !important;
+    padding-top: calc(var(--kbbq-header-h) + 24px) !important;
     padding-bottom: 3.8rem !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  body.kbbq-site .kbbq-header,
+  .kbbq-header {
+    padding-left: 0.62rem !important;
+    padding-right: 0.62rem !important;
+    column-gap: 0.3rem !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    gap: 0.58rem !important;
+    font-size: 0.94rem !important;
+    max-width: calc(100% - 100px) !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-nav,
+  .kbbq-header .kbbq-nav,
+  nav.kbbq-nav {
+    gap: 0.04rem !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-nav a,
+  .kbbq-header .kbbq-nav a,
+  nav.kbbq-nav a {
+    padding: 0 0.13rem !important;
+    font-size: 0.94rem !important;
   }
 }
 
