@@ -974,3 +974,72 @@ body {
     text-shadow: 0 2px 5px rgba(0,0,0,0.85) !important;
   }
 }
+
+
+/* =========================================================
+  KKBBQ FINAL FLOATING PATCH
+  - 모바일 언어 카드 크기는 유지하고 국기만 50% 확대
+  - 모바일 언어 카드 배경은 과하지 않게 더 또렷하게
+  - 인스타그램 플로팅 버튼은 텍스트 대신 SVG 아이콘 사용
+========================================================= */
+
+.kbbq-float .instagram .kbbq-float-instagram {
+  display: grid !important;
+  place-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.kbbq-float .instagram .kbbq-float-instagram-svg {
+  width: 27px !important;
+  height: 27px !important;
+  display: block !important;
+  fill: none !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.1 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.36)) !important;
+}
+
+@media (min-width: 769px) {
+  .kbbq-float .instagram .kbbq-float-instagram-svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .kbbq-translate-grid button {
+    background: rgba(38, 24, 18, 0.48) !important;
+    border-color: rgba(255,255,255,0.28) !important;
+    box-shadow:
+      0 10px 22px rgba(0,0,0,0.22),
+      inset 0 1px 0 rgba(255,255,255,0.12) !important;
+  }
+
+  .kbbq-translate-grid button.is-active,
+  .kbbq-translate-grid button[aria-pressed="true"] {
+    background: rgba(217, 154, 50, 0.36) !important;
+    border-color: rgba(255, 218, 140, 0.62) !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .kbbq-translate-grid button {
+    background: rgba(38, 24, 18, 0.52) !important;
+    border-color: rgba(255,255,255,0.30) !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 54px !important;
+    height: 54px !important;
+  }
+}

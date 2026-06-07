@@ -162,75 +162,6 @@
     return KBBQ_WORLD_WEATHER.cities[cityKey] || KBBQ_WORLD_WEATHER.default;
   }
 
-  function buildWorldTimeFooter() {
-    if (document.querySelector("[data-kbbq-worldtime]")) return;
-
-    const footer = document.querySelector(".kbbq-footer");
-    if (!footer) return;
-
-    const section = document.createElement("section");
-    section.className = "kbbq-worldtime";
-    section.setAttribute("data-kbbq-worldtime", "true");
-    section.setAttribute("aria-label", "World Time");
-    section.innerHTML = `
-      <div class="kbbq-worldtime__head">
-        <div>
-          <strong>World Time</strong>
-        </div>
-        <span class="kbbq-worldtime__live">LIVE</span>
-      </div>
-      <div class="kbbq-worldtime__grid">
-        ${KBBQ_WORLD_TIME.map(
-          (city) => `
-            <article class="kbbq-worldtime__card" data-world-city="${escapeHtml(city.city)}" data-world-zone="${escapeHtml(city.zone)}" data-world-weather="${escapeHtml(city.key)}">
-              <div class="kbbq-worldtime__city kbbq-world-city">
-                <span class="kbbq-worldtime__city-name kbbq-world-city-name">${escapeHtml(city.city)}</span>
-                <span class="kbbq-worldtime__country kbbq-world-country">${escapeHtml(city.label)}</span>
-              </div>
-              <div class="kbbq-worldtime__weather kbbq-world-weather" aria-hidden="true">
-                <span class="kbbq-worldtime__weather-icon"></span>
-                <span class="kbbq-worldtime__weather-temp"></span>
-                <span class="kbbq-worldtime__weather-sep">·</span>
-                <span class="kbbq-worldtime__weather-humidity"></span>
-              </div>
-              <div class="kbbq-worldtime__clock">
-                <span class="kbbq-worldtime__time kbbq-world-time" data-world-time>--:--:--</span>
-                <span class="kbbq-worldtime__clock-sep" aria-hidden="true">·</span>
-                <span class="kbbq-worldtime__date kbbq-world-date" data-world-date>---</span>
-              </div>
-            </article>
-          `
-        ).join("")}
-      </div>
-    `;
-
-    footer.appendChild(section);
-  }
-
-  function updateWorldTimeFooter() {
-    const root = document.querySelector("[data-kbbq-worldtime]");
-    if (!root) return;
-
-    const now = new Date();
-    root.querySelectorAll("[data-world-city]").forEach((card) => {
-      const zone = card.getAttribute("data-world-zone");
-      const weatherKey = card.getAttribute("data-world-weather");
-      const weather = getWorldWeather(weatherKey);
-      const timeEl = card.querySelector("[data-world-time]");
-      const dateEl = card.querySelector("[data-world-date]");
-      const weatherIconEl = card.querySelector(".kbbq-worldtime__weather-icon");
-      const weatherTempEl = card.querySelector(".kbbq-worldtime__weather-temp");
-      const weatherSepEl = card.querySelector(".kbbq-worldtime__weather-sep");
-      const weatherHumidityEl = card.querySelector(".kbbq-worldtime__weather-humidity");
-      if (weatherIconEl) weatherIconEl.textContent = weather.icon;
-      if (weatherTempEl) weatherTempEl.textContent = weather.temp;
-      if (weatherSepEl) weatherSepEl.textContent = "·";
-      if (weatherHumidityEl) weatherHumidityEl.textContent = `💧 ${weather.humidity}`;
-      if (timeEl) timeEl.textContent = formatWorldTime(now, zone);
-      if (dateEl) dateEl.textContent = formatWorldDate(now, zone);
-    });
-  }
-
   function startWorldTimeFooter() {
     buildWorldTimeFooter();
     updateWorldTimeFooter();
@@ -260,7 +191,11 @@
         <span class="kbbq-float-label">Tmap</span>
       </a>
       <a class="instagram" href="${escapeHtml(KBBQ_FLOAT_CONFIG.instagramUrl)}" target="_blank" rel="noopener" aria-label="인스타그램">
-        <span class="kbbq-float-label" aria-hidden="true">📸</span>
+        <span class="kbbq-float-instagram" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="img" focusable="false">
+          <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.25A4.75 4.75 0 1 1 12 16.75 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 12 14.75 2.75 2.75 0 0 0 12 9.25Zm5.15-2.35a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"/>
+        </svg>
+      </span>
       </a>
       <a class="blog" href="${escapeHtml(KBBQ_FLOAT_CONFIG.blogUrl)}" target="_blank" rel="noopener" aria-label="네이버 블로그">
         <span class="kbbq-float-label">Blog</span>
@@ -362,7 +297,7 @@
       tmapBtn.setAttribute("data-kbbq-decorated", "1");
       tmapBtn.setAttribute("aria-label", "티맵 길찾기");
       tmapBtn.setAttribute("title", "티맵 길찾기");
-      tmapBtn.innerHTML = '<span class="kbbq-float-label">TMAP</span>';
+      tmapBtn.innerHTML = '<span class="kbbq-float-label">Tmap</span>';
     }
 
     const instagramBtn = document.querySelector(".kbbq-float .instagram");
@@ -370,7 +305,11 @@
       instagramBtn.setAttribute("data-kbbq-decorated", "1");
       instagramBtn.setAttribute("aria-label", "인스타그램");
       instagramBtn.setAttribute("title", "인스타그램");
-      instagramBtn.innerHTML = '<span class="kbbq-float-label">IG</span>';
+      instagramBtn.innerHTML = `<span class="kbbq-float-instagram" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="img" focusable="false">
+          <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.25A4.75 4.75 0 1 1 12 16.75 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 12 14.75 2.75 2.75 0 0 0 12 9.25Zm5.15-2.35a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"/>
+        </svg>
+      </span>`;
     }
 
     const blogBtn = document.querySelector(".kbbq-float .blog");
