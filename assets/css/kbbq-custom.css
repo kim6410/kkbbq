@@ -2956,6 +2956,69 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
 }
 
 @media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero,
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  body.kbbq-site .kbbq-hero::before,
+  .kbbq-hero::before,
+  body.kbbq-site .kbbq-subhero::before,
+  .kbbq-subhero::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.45) 0%,
+        rgba(0, 0, 0, 0.58) 55%,
+        rgba(0, 0, 0, 0.72) 100%
+      ) !important;
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.10) !important;
+  }
+
+  body.kbbq-site .kbbq-hero::after,
+  .kbbq-hero::after,
+  body.kbbq-site .kbbq-subhero::after,
+  .kbbq-subhero::after,
+  body.kbbq-site .kbbq-hero-bg::after,
+  .kbbq-hero-bg::after,
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg::after,
+  .kbbq-subhero .kbbq-hero-bg::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.22) 0%,
+        rgba(0, 0, 0, 0.36) 48%,
+        rgba(0, 0, 0, 0.56) 100%
+      ) !important;
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner,
+  body.kbbq-site .kbbq-subhero > .kbbq-wrap,
+  .kbbq-subhero > .kbbq-wrap,
+  body.kbbq-site .kbbq-subhero .kbbq-wrap {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
   body.kbbq-site .kbbq-subhero,
   .kbbq-subhero {
     min-height: 620px !important;
