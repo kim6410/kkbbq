@@ -257,10 +257,10 @@
         <span class="kbbq-float-place" aria-hidden="true">N</span>
       </a>
       <a class="tmap" href="${escapeHtml(KBBQ_FLOAT_CONFIG.tmapUrl)}" target="_blank" rel="noopener" aria-label="티맵 길찾기">
-        <span class="kbbq-float-label">TMAP</span>
+        <span class="kbbq-float-label">Tmap</span>
       </a>
       <a class="instagram" href="${escapeHtml(KBBQ_FLOAT_CONFIG.instagramUrl)}" target="_blank" rel="noopener" aria-label="인스타그램">
-        <span class="kbbq-float-label">IG</span>
+        <span class="kbbq-float-label" aria-hidden="true">📸</span>
       </a>
       <a class="blog" href="${escapeHtml(KBBQ_FLOAT_CONFIG.blogUrl)}" target="_blank" rel="noopener" aria-label="네이버 블로그">
         <span class="kbbq-float-label">Blog</span>
