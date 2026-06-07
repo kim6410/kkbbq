@@ -2707,6 +2707,11 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   body.kbbq-site .kbbq-subhero .kbbq-wrap {
     position: relative !important;
     z-index: 2 !important;
+    /* 비교용:
+       translateY(-90px)  = 조금만 위로
+       translateY(-120px) = 권장 기본값
+       translateY(-150px) = 더 강하게 위로 */
+    transform: translateY(-120px) !important;
     padding: 5.8rem 0 !important;
   }
 
