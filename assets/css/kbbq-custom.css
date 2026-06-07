@@ -2538,3 +2538,72 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel:nth-child(6) .kbbq-btn {
 body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   color: #fff;
 }
+
+@media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-header,
+  .kbbq-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+      "logo call"
+      "nav nav" !important;
+    grid-auto-flow: row !important;
+    align-items: center !important;
+    align-content: start !important;
+    justify-content: stretch !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    grid-area: logo !important;
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 96px) !important;
+    gap: 0.58rem !important;
+    white-space: nowrap !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-call,
+  .kbbq-header .kbbq-call {
+    grid-area: call !important;
+    display: inline-flex !important;
+    justify-self: end !important;
+    align-self: center !important;
+    margin-left: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-nav,
+  .kbbq-header .kbbq-nav,
+  nav.kbbq-nav {
+    grid-area: nav !important;
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    gap: 0.06rem !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-nav a:first-child,
+  .kbbq-header .kbbq-nav a:first-child,
+  .kbbq-site .kbbq-nav a:first-child {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-nav a,
+  .kbbq-header .kbbq-nav a,
+  nav.kbbq-nav a {
+    font-size: 1.02rem !important;
+    padding: 0 0.2rem !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner,
+  body.kbbq-site .kbbq-subhero > .kbbq-wrap,
+  .kbbq-subhero > .kbbq-wrap,
+  body.kbbq-site .kbbq-subhero .kbbq-wrap {
+    padding-top: calc(var(--kbbq-header-h) + 20px) !important;
+  }
+}
