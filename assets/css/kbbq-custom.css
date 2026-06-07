@@ -106,6 +106,12 @@ h3 {
   background: rgba(217, 154, 50, 0.18);
   color: #fff;
 }
+.kbbq-nav a[aria-current="page"] {
+  background: linear-gradient(135deg, var(--kbbq-fire), var(--kbbq-red));
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(139, 30, 18, 0.22);
+  font-weight: 950;
+}
 .kbbq-call {
   display: inline-flex;
   align-items: center;
@@ -1526,6 +1532,12 @@ h3 {
     display: none !important;
   }
 
+  body.kbbq-site .kbbq-nav a:first-child[aria-current="page"],
+  .kbbq-site .kbbq-nav a:first-child[aria-current="page"],
+  .kbbq-header .kbbq-nav a:first-child[aria-current="page"] {
+    display: inline-flex !important;
+  }
+
   body.kbbq-site .kbbq-call,
   .kbbq-site .kbbq-call,
   .kbbq-header .kbbq-call {
@@ -2261,5 +2273,66 @@ h3 {
   .is-tapping {
     transform: none !important;
     filter: none !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-header,
+  .kbbq-header {
+    padding-right: 0.9rem !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo,
+  .kbbq-header .kbbq-logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+    white-space: nowrap !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-logo small,
+  .kbbq-header .kbbq-logo small {
+    display: inline-block !important;
+    font-size: 0.98em !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    vertical-align: baseline !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-call,
+  .kbbq-header .kbbq-call {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    order: 2 !important;
+    margin-left: auto !important;
+    z-index: 1002 !important;
+  }
+
+  body.kbbq-site .kbbq-header .kbbq-nav a[aria-current="page"],
+  .kbbq-header .kbbq-nav a[aria-current="page"] {
+    background: linear-gradient(135deg, var(--kbbq-fire), var(--kbbq-red)) !important;
+    color: #fff !important;
+    box-shadow: 0 12px 26px rgba(139, 30, 18, 0.22) !important;
+  }
+
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero,
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    align-items: flex-start !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner,
+  body.kbbq-site .kbbq-subhero > .kbbq-wrap,
+  .kbbq-subhero > .kbbq-wrap,
+  body.kbbq-site .kbbq-subhero .kbbq-wrap {
+    padding-top: calc(86px + 56px) !important;
+    padding-bottom: 3.8rem !important;
   }
 }
