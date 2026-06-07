@@ -3326,3 +3326,25 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
       0 0 12px rgba(0, 0, 0, 0.22) !important;
   }
 }
+
+@media screen and (max-width: 980px) {
+  body.kbbq-site .kbbq-hero::before,
+  .kbbq-hero::before,
+  body.kbbq-site .kbbq-hero::after,
+  .kbbq-hero::after,
+  body.kbbq-site .kbbq-subhero::before,
+  .kbbq-subhero::before,
+  body.kbbq-site .kbbq-subhero::after,
+  .kbbq-subhero::after,
+  body.kbbq-site .kbbq-hero-bg::after,
+  .kbbq-hero-bg::after,
+  body.kbbq-site .kbbq-subhero .kbbq-hero-bg::after,
+  .kbbq-subhero .kbbq-hero-bg::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.40) 0%,
+      rgba(0, 0, 0, 0.52) 55%,
+      rgba(0, 0, 0, 0.72) 100%
+    ) !important;
+  }
+}
