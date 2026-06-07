@@ -2788,3 +2788,74 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     opacity: 1 !important;
   }
 }
+@media (min-width: 981px) {
+  body.kbbq-site .kbbq-section,
+  .kbbq-section {
+    letter-spacing: 0.01em;
+  }
+
+  body.kbbq-site .kbbq-section h2,
+  .kbbq-section h2,
+  body.kbbq-site .kbbq-title h2,
+  .kbbq-title h2,
+  body.kbbq-site .kbbq-copy h2,
+  .kbbq-copy h2 {
+    font-size: clamp(2.15rem, 3.2vw, 3.55rem);
+  }
+
+  body.kbbq-site .kbbq-section .eyebrow,
+  .kbbq-section .eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+  }
+
+  body.kbbq-site .kbbq-section p,
+  .kbbq-section p,
+  body.kbbq-site .kbbq-title p,
+  .kbbq-title p,
+  body.kbbq-site .kbbq-copy p,
+  .kbbq-copy p,
+  body.kbbq-site .kbbq-story p,
+  .kbbq-story p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(43, 26, 16, 0.84);
+  }
+
+  body.kbbq-site .kbbq-card h3,
+  .kbbq-card h3,
+  body.kbbq-site .kbbq-feature-card h3,
+  .kbbq-feature-card h3,
+  body.kbbq-site .kbbq-menu-card h3,
+  .kbbq-menu-card h3 {
+    font-size: 1.25rem;
+  }
+
+  body.kbbq-site .kbbq-card p,
+  .kbbq-card p,
+  body.kbbq-site .kbbq-feature-card p,
+  .kbbq-feature-card p,
+  body.kbbq-site .kbbq-menu-card p,
+  .kbbq-menu-card p {
+    font-size: 1.02rem;
+    line-height: 1.78;
+    color: rgba(43, 26, 16, 0.8);
+  }
+
+  body.kbbq-site .kbbq-quick-card strong,
+  .kbbq-quick-card strong,
+  body.kbbq-site .kbbq-channel strong,
+  .kbbq-channel strong {
+    font-size: 1.18rem;
+  }
+
+  body.kbbq-site .kbbq-quick-card span,
+  .kbbq-quick-card span,
+  body.kbbq-site .kbbq-channel p,
+  .kbbq-channel p {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: rgba(43, 26, 16, 0.8);
+  }
+}
