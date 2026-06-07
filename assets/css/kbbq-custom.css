@@ -2883,3 +2883,46 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     font-weight: 500;
   }
 }
+
+
+/* =========================================================
+   KBBQ 모바일 헤더-히어로 흰 구분선 제거 최종 패치
+   - 고정 헤더 실제 높이와 body padding 차이로 생기는 흰 여백을 히어로가 살짝 덮도록 보정
+   - PC 히어로 1200px 설정에는 영향 없음
+========================================================= */
+@media screen and (max-width: 1180px) {
+  body.kbbq-site .kbbq-hero,
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-hero,
+  .kbbq-subhero {
+    margin-top: -5mm !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner {
+    padding-top: calc(5.2rem + 5mm) !important;
+  }
+
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    padding-top: calc(5rem + 5mm) !important;
+  }
+
+  body.kbbq-site .kbbq-header,
+  .kbbq-header {
+    border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18) !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner {
+    padding-top: calc(4.6rem + 5mm) !important;
+  }
+
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    padding-top: calc(4.5rem + 5mm) !important;
+  }
+}

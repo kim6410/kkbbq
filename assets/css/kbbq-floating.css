@@ -335,3 +335,152 @@ body {
     font-size: 0.72rem;
   }
 }
+
+
+/* =========================================================
+  KKBBQ FLOATING ACTIONS v2.1 FINAL TUNE
+  - 모바일 버튼 형광감 강화
+  - 언어 선택 국기 이모지 PC/모바일 대형화
+  - PC에서 국기 이모지가 안 보이는 경우를 대비해 표시 우선순위 강화
+========================================================= */
+
+/* PC/공통: 국기 이모지 크게, 확실하게 표시 */
+.kbbq-translate-grid button .kbbq-lang-flag {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 0 0.18rem !important;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif !important;
+  font-size: 4.3rem !important;
+  line-height: 0.95 !important;
+  filter: saturate(1.45) contrast(1.08) drop-shadow(0 8px 16px rgba(0,0,0,0.24)) !important;
+  transform: translateZ(0);
+}
+
+.kbbq-translate-grid button .kbbq-lang-name {
+  font-size: 0.95rem !important;
+  line-height: 1.05 !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.kbbq-translate-grid button {
+  min-height: 154px !important;
+  gap: 0.34rem !important;
+  padding: 12px 8px !important;
+}
+
+/* 모바일: 플로팅 버튼은 더 밝고 눈에 띄게 */
+@media (max-width: 768px) {
+  .kbbq-float {
+    --float-size: 51px;
+    --float-gap: 6px;
+  }
+
+  .kbbq-float a,
+  .kbbq-float button {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.36) !important;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.22),
+      0 10px 22px rgba(24, 12, 6, 0.36),
+      0 0 18px rgba(255,255,255,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.46) !important;
+    filter: saturate(1.45) brightness(1.12) contrast(1.04) !important;
+    border: 1px solid rgba(255,255,255,0.28) !important;
+  }
+
+  .kbbq-float a:hover,
+  .kbbq-float button:hover {
+    filter: saturate(1.65) brightness(1.18) contrast(1.05) !important;
+  }
+
+  .kbbq-float .call {
+    background: linear-gradient(135deg, #42fff2 0%, #00b8ff 52%, #0077ff 100%) !important;
+  }
+
+  .kbbq-float .booking {
+    background: linear-gradient(135deg, #ffe35a 0%, #ff9f1c 45%, #ff4d00 100%) !important;
+  }
+
+  .kbbq-float .place {
+    background: linear-gradient(135deg, #7dff8a 0%, #00d85a 48%, #03a64a 100%) !important;
+  }
+
+  .kbbq-float .tmap {
+    background: linear-gradient(135deg, #83d9ff 0%, #208cff 48%, #004dff 100%) !important;
+  }
+
+  .kbbq-float .instagram {
+    background: linear-gradient(135deg, #ff8a7a 0%, #d9488f 45%, #7a35ff 100%) !important;
+  }
+
+  .kbbq-float .blog {
+    background: linear-gradient(135deg, #7dff8a 0%, #00c85a 44%, #007f3b 100%) !important;
+  }
+
+  .kbbq-float .translate {
+    background: linear-gradient(135deg, #7afcff 0%, #2594ff 48%, #172cff 100%) !important;
+  }
+
+  .kbbq-float .top {
+    background: linear-gradient(135deg, #ffcf7a 0%, #a7652e 50%, #4a2715 100%) !important;
+  }
+
+  .kbbq-float .translate .kbbq-float-globe {
+    font-size: 30px !important;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.24));
+  }
+
+  .kbbq-float .instagram svg {
+    width: 33px !important;
+    height: 33px !important;
+    stroke-width: 2.2 !important;
+  }
+
+  /* 모바일 언어 선택: 국기 이모지 2배 수준으로 확대 */
+  .kbbq-translate-box {
+    width: min(95vw, 500px) !important;
+  }
+
+  .kbbq-translate-grid {
+    gap: 7px !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 126px !important;
+    padding: 9px 5px !important;
+    gap: 0.25rem !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 3.9rem !important;
+    line-height: 0.95 !important;
+    margin-bottom: 0.12rem !important;
+    filter: saturate(1.5) contrast(1.08) drop-shadow(0 6px 12px rgba(0,0,0,0.24)) !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 0.78rem !important;
+    font-weight: 900 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .kbbq-translate-grid button {
+    min-height: 112px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag {
+    font-size: 3.35rem !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 0.7rem !important;
+  }
+}
