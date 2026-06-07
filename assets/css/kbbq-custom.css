@@ -2717,7 +2717,6 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     display: block !important;
     background-position: center center !important;
     background-size: cover !important;
-    transform: scale(1) !important;
     transform-origin: center center !important;
     opacity: 0;
     animation: kbbqHeroZoom 7s ease-in-out infinite alternate;
