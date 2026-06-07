@@ -54,38 +54,46 @@
   transform: scale(0.96);
 }
 
-.kbbq-float .call { background: linear-gradient(135deg, #9c5a28, #5a3018); }
+.kbbq-float .call { background: linear-gradient(135deg, #8d5524, #543018); }
 .kbbq-float .booking { background: linear-gradient(135deg, #cf6a21, #a64516); }
-.kbbq-float .place { background: linear-gradient(135deg, #14824b, #0e5d35); }
+.kbbq-float .place { background: linear-gradient(135deg, #21c35b, #0b8f3f); }
 .kbbq-float .tmap { background: linear-gradient(135deg, #2d5fa7, #173d73); }
 .kbbq-float .instagram { background: linear-gradient(135deg, #7b4b43, #41211c); }
 .kbbq-float .blog { background: linear-gradient(135deg, #315b2a, #20361d); }
-.kbbq-float .translate { background: linear-gradient(135deg, #3c4658, #1f2532); }
+.kbbq-float .translate { background: linear-gradient(135deg, #2f3747, #181d28); }
 .kbbq-float .top { background: linear-gradient(135deg, #4a3323, #24150d); }
 
-.kbbq-float .translate {
-  flex-direction: column;
-  gap: 0;
+.kbbq-float .call .kbbq-float-call {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.kbbq-float .booking .kbbq-float-label,
+.kbbq-float .blog .kbbq-float-label,
+.kbbq-float .top .kbbq-float-label,
+.kbbq-float .tmap .kbbq-float-label {
+  font-size: 10px;
+}
+
+.kbbq-float .place .kbbq-float-place {
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.03em;
 }
 
 .kbbq-float .translate .kbbq-float-globe {
   display: block;
-  font-size: 19px;
+  font-size: 28px;
   line-height: 1;
-  margin-bottom: 1px;
-}
-
-.kbbq-float .translate .kbbq-float-lang {
-  display: block;
-  font-size: 8px;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  transform: translateY(-1px);
 }
 
 .kbbq-float .instagram svg {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   display: block;
   stroke: currentColor;
 }

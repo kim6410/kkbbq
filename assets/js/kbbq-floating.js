@@ -19,13 +19,12 @@
     'zh-CN': { flag: '🇨🇳', label: 'Chinese' },
     'zh-TW': { flag: '🇹🇼', label: 'Chinese TW' },
     vi: { flag: '🇻🇳', label: 'Vietnamese' },
-    th: { flag: '🇹🇭', label: 'Thai' },
-    ru: { flag: '🇷🇺', label: 'Russian' }
+    fr: { flag: '🇫🇷', label: 'French' },
+    id: { flag: '🇮🇩', label: 'Indonesian' }
   };
 
   var TRANSLATE_BUTTON_HTML =
-    '<span class="kbbq-float-globe" aria-hidden="true">🌐</span>' +
-    '<span class="kbbq-float-lang" aria-hidden="true">LANG</span>';
+    '<span class="kbbq-float-globe" aria-hidden="true">🌐</span>';
 
   var INSTAGRAM_ICON_HTML =
     '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">' +
@@ -106,7 +105,7 @@
       new google.translate.TranslateElement(
         {
           pageLanguage: 'ko',
-          includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,th,ru',
+          includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,fr,id',
           autoDisplay: false
         },
         'kbbqGoogleTranslateElement'
@@ -121,6 +120,22 @@
   }
 
   function setFloatingButtonsMarkup() {
+    var callBtn = document.querySelector('.kbbq-float .call');
+    if (callBtn && callBtn.getAttribute('data-kbbq-icon') !== '1') {
+      callBtn.setAttribute('data-kbbq-icon', '1');
+      callBtn.setAttribute('aria-label', 'Call');
+      callBtn.setAttribute('title', 'Call');
+      callBtn.innerHTML = '<span class="kbbq-float-call" aria-hidden="true">☎</span>';
+    }
+
+    var placeBtn = document.querySelector('.kbbq-float .place');
+    if (placeBtn && placeBtn.getAttribute('data-kbbq-icon') !== '1') {
+      placeBtn.setAttribute('data-kbbq-icon', '1');
+      placeBtn.setAttribute('aria-label', 'Naver Place');
+      placeBtn.setAttribute('title', 'Naver Place');
+      placeBtn.innerHTML = '<span class="kbbq-float-place" aria-hidden="true">N</span>';
+    }
+
     var translateBtn = document.getElementById('kbbqTranslateOpen');
     if (translateBtn && translateBtn.getAttribute('data-kbbq-decorated') !== '1') {
       translateBtn.setAttribute('data-kbbq-decorated', '1');
@@ -184,6 +199,7 @@
     if (!lang || lang === 'ko') {
       clearTranslateCookie();
       markCurrentLanguage('ko');
+      setStoredLanguage('ko');
       return;
     }
 
