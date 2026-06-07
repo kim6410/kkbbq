@@ -8,6 +8,74 @@
       slides[i].classList.add("is-active");
     }, 5200);
   }
+
+  const mobileTapQuery = window.matchMedia("(max-width: 980px)");
+  const tappableSelector =
+    'a.kbbq-btn, a.kbbq-call, .kbbq-bottom-cta a, .kbbq-channel .kbbq-btn';
+  const hasVibrate = typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      const link = event.target.closest(tappableSelector);
+      if (!link || !mobileTapQuery.matches) return;
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button > 0
+      ) {
+        return;
+      }
+
+      const href = link.getAttribute("href");
+      if (!href || link.dataset.tapLock === "1") return;
+
+      event.preventDefault();
+      link.dataset.tapLock = "1";
+      link.classList.add("is-tapping");
+
+      if (hasVibrate) {
+        try {
+          navigator.vibrate(10);
+        } catch (error) {
+          // Ignore vibration failures on browsers that expose the API but block it.
+        }
+      }
+
+      const release = () => {
+        link.classList.remove("is-tapping");
+        delete link.dataset.tapLock;
+      };
+
+      const target = link.getAttribute("target");
+      if (target === "_blank") {
+        const popup = window.open("about:blank", "_blank", "noopener,noreferrer");
+        window.setTimeout(() => {
+          release();
+          if (popup && !popup.closed) {
+            try {
+              popup.location.href = href;
+              return;
+            } catch (error) {
+              // Fall through to a direct open if the placeholder tab cannot be reused.
+            }
+          }
+          window.open(href, "_blank", "noopener,noreferrer");
+        }, 120);
+        return;
+      }
+
+      window.setTimeout(() => {
+        release();
+        window.location.href = href;
+      }, 120);
+    },
+    { passive: false },
+  );
+
   const items = [...document.querySelectorAll(".reveal")];
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
