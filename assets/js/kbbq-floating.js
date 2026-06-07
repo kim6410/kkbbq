@@ -13,15 +13,15 @@
   var retryTimers = [];
 
   var LANG_OPTIONS = {
-    ko: { flag: '🇰🇷', label: 'Korean' },
-    en: { flag: '🇺🇸', label: 'English' },
-    ja: { flag: '🇯🇵', label: 'Japanese' },
-    'zh-CN': { flag: '🇨🇳', label: 'Chinese' },
-    'zh-TW': { flag: '🇹🇼', label: 'Chinese TW' },
-    vi: { flag: '🇻🇳', label: 'Vietnamese' },
-    fr: { flag: '🇫🇷', label: 'French' },
-    id: { flag: '🇮🇩', label: 'Indonesian' },
-    es: { flag: '🇪🇸', label: 'Spanish' }
+    ko: { flag: '🇰🇷', label: 'Korean', flagImg: 'https://flagcdn.com/w160/kr.png' },
+    en: { flag: '🇺🇸', label: 'English', flagImg: 'https://flagcdn.com/w160/us.png' },
+    ja: { flag: '🇯🇵', label: 'Japanese', flagImg: 'https://flagcdn.com/w160/jp.png' },
+    'zh-CN': { flag: '🇨🇳', label: 'Chinese', flagImg: 'https://flagcdn.com/w160/cn.png' },
+    'zh-TW': { flag: '🇹🇼', label: 'Chinese TW', flagImg: 'https://flagcdn.com/w160/tw.png' },
+    vi: { flag: '🇻🇳', label: 'Vietnamese', flagImg: 'https://flagcdn.com/w160/vn.png' },
+    fr: { flag: '🇫🇷', label: 'French', flagImg: 'https://flagcdn.com/w160/fr.png' },
+    id: { flag: '🇮🇩', label: 'Indonesian', flagImg: 'https://flagcdn.com/w160/id.png' },
+    es: { flag: '🇪🇸', label: 'Spanish', flagImg: 'https://flagcdn.com/w160/es.png' }
   };
 
   var TRANSLATE_BUTTON_HTML =
@@ -162,9 +162,13 @@
       var lang = btn.getAttribute('data-kbbq-lang');
       var label = getLanguageLabel(lang);
       var isActive = lang === currentLang;
+      var meta = LANG_OPTIONS[lang] || LANG_OPTIONS.en;
       btn.innerHTML =
-        '<span class="kbbq-lang-flag" aria-hidden="true">' + LANG_OPTIONS[lang].flag + '</span>' +
-        '<span class="kbbq-lang-name">' + LANG_OPTIONS[lang].label + '</span>';
+        '<span class="kbbq-lang-flag" aria-hidden="true">' +
+          '<img class="kbbq-lang-flag-img" src="' + meta.flagImg + '" alt="" loading="lazy">' +
+          '<span class="kbbq-lang-flag-emoji">' + meta.flag + '</span>' +
+        '</span>' +
+        '<span class="kbbq-lang-name">' + meta.label + '</span>';
       btn.setAttribute('aria-label', label);
       btn.setAttribute('title', label);
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
