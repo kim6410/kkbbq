@@ -568,35 +568,35 @@ body {
   }
 
   .kbbq-float .call {
-    background: linear-gradient(135deg, #6fc7bf 0%, #278eaa 52%, #156985 100%) !important;
+    background: linear-gradient(135deg, rgba(111, 199, 191, 0.80) 0%, rgba(39, 142, 170, 0.80) 52%, rgba(21, 105, 133, 0.80) 100%) !important;
   }
 
   .kbbq-float .booking {
-    background: linear-gradient(135deg, #f4b447 0%, #d97706 48%, #a7430d 100%) !important;
+    background: linear-gradient(135deg, rgba(244, 180, 71, 0.80) 0%, rgba(217, 119, 6, 0.80) 48%, rgba(167, 67, 13, 0.80) 100%) !important;
   }
 
   .kbbq-float .place {
-    background: linear-gradient(135deg, #54d67f 0%, #12a455 48%, #08733d 100%) !important;
+    background: linear-gradient(135deg, rgba(84, 214, 127, 0.80) 0%, rgba(18, 164, 85, 0.80) 48%, rgba(8, 115, 61, 0.80) 100%) !important;
   }
 
   .kbbq-float .tmap {
-    background: linear-gradient(135deg, #61b9e8 0%, #2475c7 50%, #174b8b 100%) !important;
+    background: linear-gradient(135deg, rgba(97, 185, 232, 0.80) 0%, rgba(36, 117, 199, 0.80) 50%, rgba(23, 75, 139, 0.80) 100%) !important;
   }
 
   .kbbq-float .instagram {
-    background: linear-gradient(135deg, #c97070 0%, #9b3f66 48%, #5a2c54 100%) !important;
+    background: linear-gradient(135deg, rgba(201, 112, 112, 0.80) 0%, rgba(155, 63, 102, 0.80) 48%, rgba(90, 44, 84, 0.80) 100%) !important;
   }
 
   .kbbq-float .blog {
-    background: linear-gradient(135deg, #66c17c 0%, #23814a 46%, #175c38 100%) !important;
+    background: linear-gradient(135deg, rgba(102, 193, 124, 0.80) 0%, rgba(35, 129, 74, 0.80) 46%, rgba(23, 92, 56, 0.80) 100%) !important;
   }
 
   .kbbq-float .translate {
-    background: linear-gradient(135deg, #5fc7d7 0%, #2d6fb8 50%, #1b356e 100%) !important;
+    background: linear-gradient(135deg, rgba(95, 199, 215, 0.80) 0%, rgba(45, 111, 184, 0.80) 50%, rgba(27, 53, 110, 0.80) 100%) !important;
   }
 
   .kbbq-float .top {
-    background: linear-gradient(135deg, #c89458 0%, #7a4a28 50%, #392114 100%) !important;
+    background: linear-gradient(135deg, rgba(200, 148, 88, 0.80) 0%, rgba(122, 74, 40, 0.80) 50%, rgba(57, 33, 20, 0.80) 100%) !important;
   }
 
   .kbbq-float .kbbq-float-label,
