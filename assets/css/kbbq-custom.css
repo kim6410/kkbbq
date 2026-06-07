@@ -3342,9 +3342,9 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-subhero .kbbq-hero-bg::after {
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.035) 0%,
-      rgba(0, 0, 0, 0.07) 55%,
-      rgba(0, 0, 0, 0.105) 100%
+      rgba(0, 0, 0, 0.018) 0%,
+      rgba(0, 0, 0, 0.035) 55%,
+      rgba(0, 0, 0, 0.055) 100%
     ) !important;
   }
 }
