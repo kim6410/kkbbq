@@ -82,6 +82,19 @@
   letter-spacing: -0.04em;
 }
 
+@media (min-width: 769px) {
+  .kbbq-float .booking .kbbq-float-label,
+  .kbbq-float .blog .kbbq-float-label {
+    font-size: 14px;
+  }
+
+  .kbbq-float .tmap .kbbq-float-label,
+  .kbbq-float .instagram .kbbq-float-label,
+  .kbbq-float .top .kbbq-float-label {
+    font-size: 13px;
+  }
+}
+
 .kbbq-float .place .kbbq-float-place {
   display: block;
   font-size: 22px;
