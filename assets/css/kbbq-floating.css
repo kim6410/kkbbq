@@ -56,10 +56,10 @@
 
 .kbbq-float .call { background: linear-gradient(135deg, #8d5524, #543018); }
 .kbbq-float .booking { background: linear-gradient(135deg, #cf6a21, #a64516); }
-.kbbq-float .place { background: linear-gradient(135deg, #21c35b, #0b8f3f); }
+.kbbq-float .place,
+.kbbq-float .blog { background: linear-gradient(135deg, #21c35b, #0b8f3f); }
 .kbbq-float .tmap { background: linear-gradient(135deg, #2d5fa7, #173d73); }
 .kbbq-float .instagram { background: linear-gradient(135deg, #7b4b43, #41211c); }
-.kbbq-float .blog { background: linear-gradient(135deg, #315b2a, #20361d); }
 .kbbq-float .translate { background: linear-gradient(135deg, #2f3747, #181d28); }
 .kbbq-float .top { background: linear-gradient(135deg, #4a3323, #24150d); }
 
@@ -71,10 +71,15 @@
 }
 
 .kbbq-float .booking .kbbq-float-label,
+.kbbq-float .top .kbbq-float-label {
+  font-size: 12px;
+}
+
 .kbbq-float .blog .kbbq-float-label,
-.kbbq-float .top .kbbq-float-label,
 .kbbq-float .tmap .kbbq-float-label {
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
 }
 
 .kbbq-float .place .kbbq-float-place {
@@ -92,8 +97,8 @@
 }
 
 .kbbq-float .instagram svg {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   display: block;
   stroke: currentColor;
 }
