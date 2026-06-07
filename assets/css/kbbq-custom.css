@@ -1877,3 +1877,125 @@ h3 {
     padding: 0 0.34rem !important;
   }
 }
+
+/* =========================================================
+   KBBQ 모바일 히어로 확장 + 배경 밝기 보정 최종 패치
+   목적:
+   - 모바일에서 납작해 보이던 히어로/서브히어로 높이를 약 2배로 확대
+   - 어둡게 눌려 보이던 배경 이미지를 조금 더 밝고 선명하게 조정
+   - 기존 모바일 고정 헤더 구조는 유지
+   - 반드시 CSS 파일의 가장 마지막에 위치
+========================================================= */
+@media screen and (max-width: 1180px) {
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero {
+    min-height: 68vh !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner {
+    padding-top: 5.2rem !important;
+    padding-bottom: 5.4rem !important;
+  }
+
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    min-height: 46vh !important;
+    display: flex !important;
+    align-items: center !important;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(19, 12, 8, 0.50),
+        rgba(19, 12, 8, 0.18)
+      ),
+      url("../../images/kbbq/fire-night.png") center/cover no-repeat !important;
+  }
+
+  body.kbbq-site .kbbq-hero::before,
+  .kbbq-hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 6, 3, 0.38),
+        rgba(10, 6, 3, 0.46)
+      ),
+      url("../../images/kbbq/garden-day.png") center/cover no-repeat !important;
+    filter: brightness(1.18) saturate(1.08) contrast(1.02) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg,
+  .kbbq-hero-bg {
+    filter: brightness(1.2) saturate(1.12) contrast(1.02) !important;
+  }
+
+  body.kbbq-site .kbbq-hero-bg::after,
+  .kbbq-hero-bg::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 6, 3, 0.34),
+        rgba(10, 6, 3, 0.50)
+      ) !important;
+  }
+
+  body.kbbq-site .kbbq-subhero::after,
+  .kbbq-subhero::after {
+    background:
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(249, 115, 22, 0.18),
+        transparent 38%
+      ) !important;
+  }
+
+  body.kbbq-site .kbbq-hero h1,
+  body.kbbq-site .kbbq-subhero h1,
+  .kbbq-hero h1,
+  .kbbq-subhero h1 {
+    font-size: 1.92rem !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 12px 34px rgba(0, 0, 0, 0.48) !important;
+  }
+
+  body.kbbq-site .kbbq-hero .lead,
+  body.kbbq-site .kbbq-hero p,
+  body.kbbq-site .kbbq-subhero p,
+  .kbbq-hero .lead,
+  .kbbq-hero p,
+  .kbbq-subhero p {
+    color: rgba(255, 255, 255, 0.94) !important;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.44) !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  body.kbbq-site .kbbq-hero,
+  .kbbq-hero {
+    min-height: 64vh !important;
+  }
+
+  body.kbbq-site .kbbq-hero-inner,
+  .kbbq-hero-inner {
+    padding-top: 4.6rem !important;
+    padding-bottom: 4.8rem !important;
+  }
+
+  body.kbbq-site .kbbq-subhero,
+  .kbbq-subhero {
+    min-height: 42vh !important;
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  body.kbbq-site .kbbq-hero h1,
+  body.kbbq-site .kbbq-subhero h1,
+  .kbbq-hero h1,
+  .kbbq-subhero h1 {
+    font-size: 1.72rem !important;
+  }
+}
