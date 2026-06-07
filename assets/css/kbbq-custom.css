@@ -1131,7 +1131,7 @@ h3 {
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     gap: 0.28rem !important;
     overflow-x: auto !important;
     padding: 0 0 0.15rem !important;
@@ -1478,7 +1478,7 @@ h3 {
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     gap: 0.28rem !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
@@ -1497,12 +1497,12 @@ h3 {
   .kbbq-site .kbbq-nav a,
   .kbbq-header .kbbq-nav a {
     flex: 0 0 auto !important;
-    height: 28px !important;
-    min-height: 28px !important;
-    padding: 0 0.58rem !important;
-    font-size: 0.84rem !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    padding: 0 0.62rem !important;
+    font-size: 0.9rem !important;
     font-weight: 850 !important;
-    line-height: 28px !important;
+    line-height: 30px !important;
     border-radius: 999px !important;
     background: rgba(255, 255, 255, 0.07) !important;
     color: rgba(255, 255, 255, 0.9) !important;
@@ -1549,7 +1549,44 @@ h3 {
     height: 27px !important;
     min-height: 27px !important;
     line-height: 27px !important;
-    font-size: 0.81rem !important;
-    padding: 0 0.5rem !important;
+    font-size: 0.875rem !important;
+    padding: 0 0.54rem !important;
+  }
+}
+
+
+/* =========================================================
+   KBBQ 모바일 메뉴 가독성 보정 최종 잠금
+   - 메뉴 5개 중앙 정렬
+   - 기존보다 약 1px 크게 조정
+========================================================= */
+@media screen and (max-width: 1180px) {
+  body.kbbq-site .kbbq-nav,
+  .kbbq-site .kbbq-nav,
+  .kbbq-header .kbbq-nav {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body.kbbq-site .kbbq-nav a,
+  .kbbq-site .kbbq-nav a,
+  .kbbq-header .kbbq-nav a {
+    height: 30px !important;
+    min-height: 30px !important;
+    line-height: 30px !important;
+    font-size: 0.9rem !important;
+    padding: 0 0.62rem !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  body.kbbq-site .kbbq-nav a,
+  .kbbq-site .kbbq-nav a,
+  .kbbq-header .kbbq-nav a {
+    height: 29px !important;
+    min-height: 29px !important;
+    line-height: 29px !important;
+    font-size: 0.875rem !important;
+    padding: 0 0.54rem !important;
   }
 }
