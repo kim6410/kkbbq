@@ -23,7 +23,22 @@
     { code: "fr", label: "French", flag: "🇫🇷", flagImg: "https://flagcdn.com/w160/fr.png" },
     { code: "id", label: "Indonesian", flag: "🇮🇩", flagImg: "https://flagcdn.com/w160/id.png" },
     { code: "es", label: "Spanish", flag: "🇪🇸", flagImg: "https://flagcdn.com/w160/es.png" },
+    { code: "th", label: "Thai", flag: "🇹🇭", flagImg: "https://flagcdn.com/w160/th.png" },
+    { code: "ru", label: "Russian", flag: "🇷🇺", flagImg: "https://flagcdn.com/w160/ru.png" },
+    { code: "de", label: "German", flag: "🇩🇪", flagImg: "https://flagcdn.com/w160/de.png" },
+    { code: "it", label: "Italian", flag: "🇮🇹", flagImg: "https://flagcdn.com/w160/it.png" },
+    { code: "pt", label: "Portuguese", flag: "🇵🇹", flagImg: "https://flagcdn.com/w160/pt.png" },
+    { code: "ar", label: "Arabic", flag: "🇸🇦", flagImg: "https://flagcdn.com/w160/sa.png" },
+    { code: "hi", label: "Hindi", flag: "🇮🇳", flagImg: "https://flagcdn.com/w160/in.png" },
   ]);
+
+  const KBBQ_WEATHER = Object.freeze({
+    icon: "☀️",
+    temp: "26℃",
+    humidity: "58%",
+  });
+
+  window.KBBQ_WEATHER = KBBQ_WEATHER;
 
   const KBBQ_WORLD_TIME = Object.freeze([
     { city: "Seoul", zone: "Asia/Seoul", label: "Korea" },
@@ -134,7 +149,6 @@
       <div class="kbbq-worldtime__head">
         <div>
           <strong>World Time</strong>
-          <span>주요 도시의 현재 시간을 푸터에서 바로 확인하세요.</span>
         </div>
         <span class="kbbq-worldtime__live">LIVE</span>
       </div>
@@ -237,6 +251,13 @@
                 <span class="kbbq-lang-flag-emoji">${lang.flag}</span>
               </span>
               <span class="kbbq-lang-name">${lang.label}</span>
+              <span class="kbbq-lang-weather" aria-hidden="true">
+                <span class="kbbq-lang-weather-row">
+                  <span class="kbbq-lang-weather-icon">${KBBQ_WEATHER.icon}</span>
+                  <span class="kbbq-lang-weather-temp">${KBBQ_WEATHER.temp}</span>
+                </span>
+                <span class="kbbq-lang-weather-humidity">💧 ${KBBQ_WEATHER.humidity}</span>
+              </span>
             </button>
           `).join("")}
         </div>
@@ -265,8 +286,14 @@
       const lang = btn.getAttribute("data-kbbq-lang");
       const meta = getLanguageMeta(lang);
       const isActive = lang === currentLang;
-      btn.setAttribute("aria-label", `${meta.flag} ${meta.label}`);
-      btn.setAttribute("title", `${meta.flag} ${meta.label}`);
+      btn.setAttribute(
+        "aria-label",
+        `${meta.flag} ${meta.label} - ${KBBQ_WEATHER.icon} ${KBBQ_WEATHER.temp} ${KBBQ_WEATHER.humidity}`
+      );
+      btn.setAttribute(
+        "title",
+        `${meta.flag} ${meta.label} - ${KBBQ_WEATHER.icon} ${KBBQ_WEATHER.temp} ${KBBQ_WEATHER.humidity}`
+      );
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
       btn.classList.toggle("is-active", isActive);
     });

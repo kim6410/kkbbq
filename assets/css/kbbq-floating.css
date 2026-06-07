@@ -685,3 +685,139 @@ body {
     box-shadow: 0 18px 44px rgba(0,0,0,0.12) !important;
   }
 }
+
+/* =========================================================
+  KKBBQ FLOATING ACTIONS v2.3 LANGUAGE WEATHER BOOST
+  - 언어 카드에 날씨 샘플 정보 추가
+  - 국기/언어명 가독성 확대
+  - hover 시 카드와 국기가 함께 떠오르는 느낌
+========================================================= */
+
+.kbbq-translate-box {
+  width: min(94vw, 760px) !important;
+}
+
+.kbbq-translate-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.kbbq-translate-grid button {
+  min-height: 176px !important;
+  padding: 12px 10px 14px !important;
+  border-radius: 18px !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+}
+
+.kbbq-translate-grid button:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  background: rgba(255,255,255,0.16) !important;
+}
+
+.kbbq-translate-grid button:hover .kbbq-lang-flag {
+  transform: translateY(-3px) scale(1.05) !important;
+}
+
+.kbbq-translate-grid button .kbbq-lang-flag {
+  width: 88px !important;
+  height: 66px !important;
+  margin: 0 auto 0.25rem !important;
+  transition: transform 0.18s ease, filter 0.18s ease !important;
+}
+
+.kbbq-translate-grid button .kbbq-lang-flag-img {
+  width: 88px !important;
+  height: 66px !important;
+  border-radius: 12px !important;
+}
+
+.kbbq-translate-grid button .kbbq-lang-name {
+  font-size: 1.08rem !important;
+  font-weight: 900 !important;
+}
+
+.kbbq-lang-weather {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.12rem !important;
+  margin-top: 0.08rem !important;
+}
+
+.kbbq-lang-weather-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.3rem !important;
+  font-size: 0.98rem !important;
+  line-height: 1.1 !important;
+  color: rgba(255,255,255,0.96) !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.36) !important;
+}
+
+.kbbq-lang-weather-icon {
+  font-size: 1.02rem !important;
+}
+
+.kbbq-lang-weather-temp {
+  font-weight: 700 !important;
+}
+
+.kbbq-lang-weather-humidity {
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  opacity: 0.85 !important;
+  color: rgba(255,255,255,0.92) !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.32) !important;
+}
+
+@media (max-width: 768px) {
+  .kbbq-translate-box {
+    width: min(96vw, 560px) !important;
+  }
+
+  .kbbq-translate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 168px !important;
+    padding: 11px 9px 12px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 78px !important;
+    height: 64px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 1.02rem !important;
+  }
+
+  .kbbq-lang-weather-row {
+    font-size: 0.94rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .kbbq-translate-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 160px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 72px !important;
+    height: 64px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 1rem !important;
+  }
+}
