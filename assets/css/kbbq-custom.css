@@ -2543,8 +2543,8 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   body.kbbq-site .kbbq-header,
   .kbbq-header {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) max-content !important;
-    grid-template-areas: "logo call" "nav nav" !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: "logo" "nav" !important;
     grid-template-rows: auto auto !important;
     grid-auto-flow: row !important;
     align-items: center !important;
@@ -2555,27 +2555,18 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   body.kbbq-site .kbbq-header .kbbq-logo,
   .kbbq-header .kbbq-logo {
     grid-area: logo !important;
-    grid-column: 1 !important;
+    grid-column: 1 / -1 !important;
     grid-row: 1 !important;
     flex: 0 1 auto !important;
     min-width: 0 !important;
-    max-width: calc(100% - 86px) !important;
-    gap: 0.66rem !important;
+    max-width: 100% !important;
+    gap: 0.72rem !important;
     white-space: nowrap !important;
   }
 
   body.kbbq-site .kbbq-header .kbbq-call,
   .kbbq-header .kbbq-call {
-    grid-area: call !important;
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    display: inline-flex !important;
-    justify-self: end !important;
-    align-self: center !important;
-    margin-left: 0 !important;
-    width: auto !important;
-    min-width: max-content !important;
-    white-space: nowrap !important;
+    display: none !important;
   }
 
   body.kbbq-site .kbbq-header .kbbq-nav,
@@ -2588,7 +2579,8 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
     width: 100% !important;
     justify-content: center !important;
     overflow: visible !important;
-    gap: 0.03rem !important;
+    gap: 0.22rem !important;
+    padding-top: 0.08rem !important;
   }
 
   body.kbbq-site .kbbq-header .kbbq-nav a:first-child,
@@ -2602,8 +2594,8 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   body.kbbq-site .kbbq-header .kbbq-nav a,
   .kbbq-header .kbbq-nav a,
   nav.kbbq-nav a {
-    font-size: 1.18rem !important;
-    padding: 0 0.24rem !important;
+    font-size: 1.12rem !important;
+    padding: 0 0.34rem !important;
   }
 
   body.kbbq-site .kbbq-hero-inner,
