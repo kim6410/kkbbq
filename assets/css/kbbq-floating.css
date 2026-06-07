@@ -795,6 +795,8 @@ body {
 
   .kbbq-translate-grid button .kbbq-lang-name {
     font-size: 1.02rem !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.72) !important;
   }
 
   .kbbq-lang-weather-row {
@@ -825,6 +827,7 @@ body {
 
   .kbbq-translate-grid button .kbbq-lang-name {
     font-size: 0.98rem !important;
+    color: #fff !important;
     text-shadow: 0 2px 6px rgba(0,0,0,0.72) !important;
   }
 }
@@ -861,6 +864,7 @@ body {
 
 .kbbq-translate-grid button .kbbq-lang-name {
   font-size: 1.12rem !important;
+  color: #fff !important;
   text-shadow: 0 2px 6px rgba(0,0,0,0.68) !important;
 }
 
@@ -889,6 +893,7 @@ body {
 
   .kbbq-translate-grid button .kbbq-lang-name {
     font-size: 0.96rem !important;
+    color: #fff !important;
     text-shadow: 0 2px 6px rgba(0,0,0,0.72) !important;
   }
 }
