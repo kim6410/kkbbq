@@ -2800,7 +2800,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-title h2,
   body.kbbq-site .kbbq-copy h2,
   .kbbq-copy h2 {
-    font-size: clamp(2.15rem, 3.2vw, 3.55rem);
+    font-size: clamp(2.25rem, 3.35vw, 3.75rem);
   }
 
   body.kbbq-site .kbbq-section .eyebrow,
@@ -2820,7 +2820,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-story p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: rgba(43, 26, 16, 0.84);
+    color: rgba(35, 20, 12, 0.92);
   }
 
   body.kbbq-site .kbbq-card h3,
@@ -2840,7 +2840,8 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-menu-card p {
     font-size: 1.02rem;
     line-height: 1.78;
-    color: rgba(43, 26, 16, 0.8);
+    color: rgba(35, 20, 12, 0.9);
+    font-weight: 500;
   }
 
   body.kbbq-site .kbbq-quick-card strong,
@@ -2856,6 +2857,7 @@ body.kbbq-site .kbbq-channel-grid > .kbbq-channel .kbbq-btn:hover {
   .kbbq-channel p {
     font-size: 0.98rem;
     line-height: 1.75;
-    color: rgba(43, 26, 16, 0.8);
+    color: rgba(35, 20, 12, 0.9);
+    font-weight: 500;
   }
 }
