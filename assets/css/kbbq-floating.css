@@ -912,3 +912,65 @@ body {
     min-height: 104px !important;
   }
 }
+
+/* =========================================================
+  KKBBQ TRANSLATE POPUP MOBILE 3-COLUMN TIGHT OVERRIDE
+========================================================= */
+
+@media (max-width: 768px) {
+  .kbbq-translate-box {
+    width: min(96vw, 420px) !important;
+    max-height: 68vh !important;
+  }
+
+  .kbbq-translate-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 76px !important;
+    padding: 4px 3px 5px !important;
+    gap: 2px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 0.8rem !important;
+    line-height: 1.02 !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.82) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .kbbq-translate-box {
+    width: min(96vw, 390px) !important;
+    max-height: 64vh !important;
+  }
+
+  .kbbq-translate-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 3px !important;
+  }
+
+  .kbbq-translate-grid button {
+    min-height: 70px !important;
+    padding: 4px 2px 4px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-flag,
+  .kbbq-translate-grid button .kbbq-lang-flag-img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .kbbq-translate-grid button .kbbq-lang-name {
+    font-size: 0.74rem !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.85) !important;
+  }
+}
