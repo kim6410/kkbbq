@@ -1,50 +1,59 @@
-/* =========================================================
-  KKBBQ FLOATING ACTIONS v2.0
-========================================================= */
 (function () {
   if (window.__kbbqFloatingActions) return;
   window.__kbbqFloatingActions = true;
 
-  var LANG_KEY = 'kbbq_lang';
-  var translateLoaded = false;
-  var translateLoading = false;
-  var currentLang = 'ko';
-  var restoreTimers = [];
-  var retryTimers = [];
+  const KBBQ_FLOAT_CONFIG = Object.freeze({
+    phone: "050713935889",
+    phoneLabel: "0507-1393-5889",
+    bookingUrl:
+      "https://m.booking.naver.com/booking/6/bizes/425958/items/3631234?area=pll&lang=ko&service-target=map-pc&startDate=2026-06-07&theme=place",
+    placeUrl: "https://naver.me/xAF7Sexr",
+    tmapUrl: "https://tmap.life/7925659a",
+    instagramUrl: "https://www.instagram.com/kkbbq5889",
+    blogUrl: "https://blog.naver.com/gnlfus0727",
+  });
 
-  var LANG_OPTIONS = {
-    ko: { flag: '🇰🇷', label: 'Korean', flagImg: 'https://flagcdn.com/w160/kr.png' },
-    en: { flag: '🇺🇸', label: 'English', flagImg: 'https://flagcdn.com/w160/us.png' },
-    ja: { flag: '🇯🇵', label: 'Japanese', flagImg: 'https://flagcdn.com/w160/jp.png' },
-    'zh-CN': { flag: '🇨🇳', label: 'Chinese', flagImg: 'https://flagcdn.com/w160/cn.png' },
-    'zh-TW': { flag: '🇹🇼', label: 'Chinese TW', flagImg: 'https://flagcdn.com/w160/tw.png' },
-    vi: { flag: '🇻🇳', label: 'Vietnamese', flagImg: 'https://flagcdn.com/w160/vn.png' },
-    fr: { flag: '🇫🇷', label: 'French', flagImg: 'https://flagcdn.com/w160/fr.png' },
-    id: { flag: '🇮🇩', label: 'Indonesian', flagImg: 'https://flagcdn.com/w160/id.png' },
-    es: { flag: '🇪🇸', label: 'Spanish', flagImg: 'https://flagcdn.com/w160/es.png' }
-  };
+  const KBBQ_LANGS = Object.freeze([
+    { code: "ko", label: "Korean", flag: "🇰🇷", flagImg: "https://flagcdn.com/w160/kr.png" },
+    { code: "en", label: "English", flag: "🇺🇸", flagImg: "https://flagcdn.com/w160/us.png" },
+    { code: "ja", label: "Japanese", flag: "🇯🇵", flagImg: "https://flagcdn.com/w160/jp.png" },
+    { code: "zh-CN", label: "Chinese", flag: "🇨🇳", flagImg: "https://flagcdn.com/w160/cn.png" },
+    { code: "zh-TW", label: "Chinese TW", flag: "🇹🇼", flagImg: "https://flagcdn.com/w160/tw.png" },
+    { code: "vi", label: "Vietnamese", flag: "🇻🇳", flagImg: "https://flagcdn.com/w160/vn.png" },
+    { code: "fr", label: "French", flag: "🇫🇷", flagImg: "https://flagcdn.com/w160/fr.png" },
+    { code: "id", label: "Indonesian", flag: "🇮🇩", flagImg: "https://flagcdn.com/w160/id.png" },
+    { code: "es", label: "Spanish", flag: "🇪🇸", flagImg: "https://flagcdn.com/w160/es.png" },
+  ]);
 
-  var TRANSLATE_BUTTON_HTML =
-    '<span class="kbbq-float-globe" aria-hidden="true">🌐</span>';
+  const LANG_KEY = "kbbq_lang";
+  const mobileTapQuery = window.matchMedia("(max-width: 980px)");
+  const hasVibrate = typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
 
-  var INSTAGRAM_ICON_HTML =
-    '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">' +
-    '<rect x="4" y="6.5" width="16" height="13" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.9"></rect>' +
-    '<path d="M9 6.5l1.1-2h3.8l1.1 2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>' +
-    '<circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="1.9"></circle>' +
-    '</svg>';
+  let translateLoaded = false;
+  let translateLoading = false;
+  let currentLang = "ko";
+  const restoreTimers = [];
+  const retryTimers = [];
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
 
   function getStoredLanguage() {
     try {
-      return localStorage.getItem(LANG_KEY) || 'ko';
+      return localStorage.getItem(LANG_KEY) || "ko";
     } catch (e) {
-      return 'ko';
+      return "ko";
     }
   }
 
   function setStoredLanguage(lang) {
     try {
-      if (!lang || lang === 'ko') {
+      if (!lang || lang === "ko") {
         localStorage.removeItem(LANG_KEY);
       } else {
         localStorage.setItem(LANG_KEY, lang);
@@ -57,15 +66,182 @@
   }
 
   function setCookie(name, value) {
-    document.cookie = name + '=' + value + '; path=/';
-    document.cookie = name + '=' + value + '; path=/; domain=' + location.hostname;
+    document.cookie = `${name}=${value}; path=/`;
+    document.cookie = `${name}=${value}; path=/; domain=${location.hostname}`;
   }
 
   function clearTranslateCookie() {
-    var expire = 'Thu, 01 Jan 1970 00:00:00 GMT';
-    document.cookie = 'googtrans=; expires=' + expire + '; path=/';
-    document.cookie = 'googtrans=; expires=' + expire + '; path=/; domain=' + location.hostname;
-    document.cookie = 'googtrans=; expires=' + expire + '; path=/; domain=.' + location.hostname;
+    const expire = "Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = `googtrans=; expires=${expire}; path=/`;
+    document.cookie = `googtrans=; expires=${expire}; path=/; domain=${location.hostname}`;
+    document.cookie = `googtrans=; expires=${expire}; path=/; domain=.${location.hostname}`;
+  }
+
+  function ensureGoogleTranslateMount() {
+    if (document.getElementById("kbbqGoogleTranslateElement")) return;
+    const mount = document.createElement("div");
+    mount.id = "kbbqGoogleTranslateElement";
+    mount.setAttribute("aria-hidden", "true");
+    mount.style.display = "none";
+    document.body.appendChild(mount);
+  }
+
+  function buildFloatingMarkup() {
+    if (document.querySelector(".kbbq-float")) return;
+
+    const float = document.createElement("div");
+    float.className = "kbbq-float";
+    float.setAttribute("aria-label", "강경숯불바베큐 빠른 메뉴");
+    float.innerHTML = `
+      <a class="call" href="tel:${KBBQ_FLOAT_CONFIG.phone}" aria-label="전화 문의 ${KBBQ_FLOAT_CONFIG.phoneLabel}">
+        <span class="kbbq-float-call" aria-hidden="true">☎</span>
+      </a>
+      <a class="booking" href="${escapeHtml(KBBQ_FLOAT_CONFIG.bookingUrl)}" target="_blank" rel="noopener" aria-label="네이버 예약">
+        <span class="kbbq-float-label">예약</span>
+      </a>
+      <a class="place" href="${escapeHtml(KBBQ_FLOAT_CONFIG.placeUrl)}" target="_blank" rel="noopener" aria-label="네이버 플레이스">
+        <span class="kbbq-float-place" aria-hidden="true">N</span>
+      </a>
+      <a class="tmap" href="${escapeHtml(KBBQ_FLOAT_CONFIG.tmapUrl)}" target="_blank" rel="noopener" aria-label="티맵 길찾기">
+        <span class="kbbq-float-label">TMAP</span>
+      </a>
+      <a class="instagram" href="${escapeHtml(KBBQ_FLOAT_CONFIG.instagramUrl)}" target="_blank" rel="noopener" aria-label="인스타그램">
+        <span class="kbbq-float-label">IG</span>
+      </a>
+      <a class="blog" href="${escapeHtml(KBBQ_FLOAT_CONFIG.blogUrl)}" target="_blank" rel="noopener" aria-label="네이버 블로그">
+        <span class="kbbq-float-label">Blog</span>
+      </a>
+      <button class="translate" id="kbbqTranslateOpen" type="button" aria-label="번역">
+        <span class="kbbq-float-globe" aria-hidden="true">🌐</span>
+      </button>
+      <button class="top" id="kbbqFloatTop" type="button" aria-label="페이지 상단으로 이동">
+        <span class="kbbq-float-label">TOP</span>
+      </button>
+    `;
+
+    document.body.appendChild(float);
+  }
+
+  function buildTranslateModal() {
+    if (document.querySelector("#kbbqTranslateModal")) return;
+
+    const modal = document.createElement("div");
+    modal.className = "kbbq-translate-modal";
+    modal.id = "kbbqTranslateModal";
+    modal.setAttribute("aria-hidden", "true");
+    modal.innerHTML = `
+      <div class="kbbq-translate-box" role="dialog" aria-modal="true" aria-label="언어 선택">
+        <div class="kbbq-translate-head">
+          <strong>언어 선택</strong>
+          <button class="kbbq-translate-close" id="kbbqTranslateClose" type="button" aria-label="닫기">×</button>
+        </div>
+        <div class="kbbq-translate-grid">
+          ${KBBQ_LANGS.map((lang) => `
+            <button type="button" data-kbbq-lang="${lang.code}">
+              <span class="kbbq-lang-flag" aria-hidden="true">
+                <img class="kbbq-lang-flag-img" src="${escapeHtml(lang.flagImg)}" alt="" loading="lazy">
+                <span class="kbbq-lang-flag-emoji">${lang.flag}</span>
+              </span>
+              <span class="kbbq-lang-name">${lang.label}</span>
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  }
+
+  function buildFloatingStructure() {
+    if (!document.body) return;
+    buildFloatingMarkup();
+    buildTranslateModal();
+    ensureGoogleTranslateMount();
+  }
+
+  function getLanguageMeta(lang) {
+    return KBBQ_LANGS.find((item) => item.code === lang) || KBBQ_LANGS[1];
+  }
+
+  function syncLanguageButtons() {
+    const modal = document.querySelector("#kbbqTranslateModal");
+    if (!modal) return;
+
+    modal.querySelectorAll("[data-kbbq-lang]").forEach((btn) => {
+      const lang = btn.getAttribute("data-kbbq-lang");
+      const meta = getLanguageMeta(lang);
+      const isActive = lang === currentLang;
+      btn.setAttribute("aria-label", `${meta.flag} ${meta.label}`);
+      btn.setAttribute("title", `${meta.flag} ${meta.label}`);
+      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+      btn.classList.toggle("is-active", isActive);
+    });
+  }
+
+  function setFloatingDecorations() {
+    const callBtn = document.querySelector(".kbbq-float .call");
+    if (callBtn && callBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      callBtn.setAttribute("data-kbbq-decorated", "1");
+      callBtn.setAttribute("aria-label", `전화 문의 ${KBBQ_FLOAT_CONFIG.phoneLabel}`);
+      callBtn.setAttribute("title", `전화 문의 ${KBBQ_FLOAT_CONFIG.phoneLabel}`);
+      callBtn.innerHTML = '<span class="kbbq-float-call" aria-hidden="true">☎</span>';
+    }
+
+    const bookingBtn = document.querySelector(".kbbq-float .booking");
+    if (bookingBtn && bookingBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      bookingBtn.setAttribute("data-kbbq-decorated", "1");
+      bookingBtn.setAttribute("aria-label", "네이버 예약");
+      bookingBtn.setAttribute("title", "네이버 예약");
+      bookingBtn.innerHTML = '<span class="kbbq-float-label">예약</span>';
+    }
+
+    const placeBtn = document.querySelector(".kbbq-float .place");
+    if (placeBtn && placeBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      placeBtn.setAttribute("data-kbbq-decorated", "1");
+      placeBtn.setAttribute("aria-label", "네이버 플레이스");
+      placeBtn.setAttribute("title", "네이버 플레이스");
+      placeBtn.innerHTML = '<span class="kbbq-float-place" aria-hidden="true">N</span>';
+    }
+
+    const tmapBtn = document.querySelector(".kbbq-float .tmap");
+    if (tmapBtn && tmapBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      tmapBtn.setAttribute("data-kbbq-decorated", "1");
+      tmapBtn.setAttribute("aria-label", "티맵 길찾기");
+      tmapBtn.setAttribute("title", "티맵 길찾기");
+      tmapBtn.innerHTML = '<span class="kbbq-float-label">TMAP</span>';
+    }
+
+    const instagramBtn = document.querySelector(".kbbq-float .instagram");
+    if (instagramBtn && instagramBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      instagramBtn.setAttribute("data-kbbq-decorated", "1");
+      instagramBtn.setAttribute("aria-label", "인스타그램");
+      instagramBtn.setAttribute("title", "인스타그램");
+      instagramBtn.innerHTML = '<span class="kbbq-float-label">IG</span>';
+    }
+
+    const blogBtn = document.querySelector(".kbbq-float .blog");
+    if (blogBtn && blogBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      blogBtn.setAttribute("data-kbbq-decorated", "1");
+      blogBtn.setAttribute("aria-label", "네이버 블로그");
+      blogBtn.setAttribute("title", "네이버 블로그");
+      blogBtn.innerHTML = '<span class="kbbq-float-label">Blog</span>';
+    }
+
+    const translateBtn = document.getElementById("kbbqTranslateOpen");
+    if (translateBtn && translateBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      translateBtn.setAttribute("data-kbbq-decorated", "1");
+      translateBtn.setAttribute("aria-label", "Language / Translate");
+      translateBtn.setAttribute("title", "Language / Translate");
+      translateBtn.innerHTML = '<span class="kbbq-float-globe" aria-hidden="true">🌐</span>';
+    }
+
+    const topBtn = document.getElementById("kbbqFloatTop");
+    if (topBtn && topBtn.getAttribute("data-kbbq-decorated") !== "1") {
+      topBtn.setAttribute("data-kbbq-decorated", "1");
+      topBtn.setAttribute("aria-label", "페이지 상단으로 이동");
+      topBtn.setAttribute("title", "페이지 상단으로 이동");
+      topBtn.innerHTML = '<span class="kbbq-float-label">TOP</span>';
+    }
   }
 
   function loadGoogleTranslate(callback) {
@@ -76,17 +252,15 @@
 
     if (translateLoading) {
       if (callback) {
-        setTimeout(function () {
-          callback();
-        }, 350);
+        setTimeout(callback, 350);
       }
       return;
     }
 
     translateLoading = true;
 
-    var script = document.createElement('script');
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=kbbqGoogleTranslateInit';
+    const script = document.createElement("script");
+    script.src = "https://translate.google.com/translate_a/element.js?cb=kbbqGoogleTranslateInit";
     script.async = true;
     script.onload = function () {
       setTimeout(function () {
@@ -105,130 +279,38 @@
       if (!window.google || !google.translate) return;
       new google.translate.TranslateElement(
         {
-          pageLanguage: 'ko',
-          includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,fr,id,es',
-          autoDisplay: false
+          pageLanguage: "ko",
+          includedLanguages: KBBQ_LANGS.map((item) => item.code).join(","),
+          autoDisplay: false,
         },
-        'kbbqGoogleTranslateElement'
+        "kbbqGoogleTranslateElement"
       );
       translateLoaded = true;
     } catch (e) {}
   };
 
-  function getLanguageLabel(lang) {
-    var meta = LANG_OPTIONS[lang] || LANG_OPTIONS.en;
-    return meta.flag + ' ' + meta.label;
-  }
-
-  function setFloatingButtonsMarkup() {
-    var callBtn = document.querySelector('.kbbq-float .call');
-    if (callBtn && callBtn.getAttribute('data-kbbq-icon') !== '1') {
-      callBtn.setAttribute('data-kbbq-icon', '1');
-      callBtn.setAttribute('aria-label', 'Call');
-      callBtn.setAttribute('title', 'Call');
-      callBtn.innerHTML = '<span class="kbbq-float-call" aria-hidden="true">☎</span>';
-    }
-
-    var placeBtn = document.querySelector('.kbbq-float .place');
-    if (placeBtn && placeBtn.getAttribute('data-kbbq-icon') !== '1') {
-      placeBtn.setAttribute('data-kbbq-icon', '1');
-      placeBtn.setAttribute('aria-label', 'Naver Place');
-      placeBtn.setAttribute('title', 'Naver Place');
-      placeBtn.innerHTML = '<span class="kbbq-float-place" aria-hidden="true">N</span>';
-    }
-
-    var translateBtn = document.getElementById('kbbqTranslateOpen');
-    if (translateBtn && translateBtn.getAttribute('data-kbbq-decorated') !== '1') {
-      translateBtn.setAttribute('data-kbbq-decorated', '1');
-      translateBtn.setAttribute('aria-label', 'Language / Translate');
-      translateBtn.setAttribute('title', 'Language / Translate');
-      translateBtn.innerHTML = TRANSLATE_BUTTON_HTML;
-    }
-
-    document.querySelectorAll('.kbbq-float .instagram').forEach(function (btn) {
-      if (btn.getAttribute('data-kbbq-icon') === '1') return;
-      btn.setAttribute('data-kbbq-icon', '1');
-      btn.setAttribute('aria-label', 'Instagram');
-      btn.setAttribute('title', 'Instagram');
-      btn.innerHTML = INSTAGRAM_ICON_HTML;
-    });
-  }
-
-  function syncLanguageButtons() {
-    var modal = document.getElementById('kbbqTranslateModal');
-    if (!modal) return;
-
-    modal.querySelectorAll('[data-kbbq-lang]').forEach(function (btn) {
-      var lang = btn.getAttribute('data-kbbq-lang');
-      var label = getLanguageLabel(lang);
-      var isActive = lang === currentLang;
-      var meta = LANG_OPTIONS[lang] || LANG_OPTIONS.en;
-      btn.innerHTML =
-        '<span class="kbbq-lang-flag" aria-hidden="true">' +
-          '<img class="kbbq-lang-flag-img" src="' + meta.flagImg + '" alt="" loading="lazy">' +
-          '<span class="kbbq-lang-flag-emoji">' + meta.flag + '</span>' +
-        '</span>' +
-        '<span class="kbbq-lang-name">' + meta.label + '</span>';
-      btn.setAttribute('aria-label', label);
-      btn.setAttribute('title', label);
-      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      btn.classList.toggle('is-active', isActive);
-    });
-  }
-
-  function markCurrentLanguage(lang) {
-    currentLang = lang || 'ko';
-    syncLanguageButtons();
-  }
-
   function applyComboLanguage(lang) {
-    if (!lang || lang === 'ko') return true;
+    if (!lang || lang === "ko") return true;
 
-    var combo = document.querySelector('.goog-te-combo');
+    const combo = document.querySelector(".goog-te-combo");
     if (!combo) return false;
 
     try {
-      setCookie('googtrans', '/ko/' + lang);
+      setCookie("googtrans", `/ko/${lang}`);
       if (combo.value !== lang) combo.value = lang;
-      combo.dispatchEvent(new Event('change', { bubbles: true }));
+      combo.dispatchEvent(new Event("change", { bubbles: true }));
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  function restoreLanguage(lang) {
-    clearTimers(restoreTimers);
-    clearTimers(retryTimers);
-
-    if (!lang || lang === 'ko') {
-      clearTranslateCookie();
-      markCurrentLanguage('ko');
-      setStoredLanguage('ko');
-      return;
-    }
-
-    markCurrentLanguage(lang);
-    setStoredLanguage(lang);
-    setCookie('googtrans', '/ko/' + lang);
-    loadGoogleTranslate(function () {
-      attemptRestore(lang, 0);
-    });
-
-    [500, 1200].forEach(function (delay) {
-      restoreTimers.push(
-        setTimeout(function () {
-          attemptRestore(lang, 0);
-        }, delay)
-      );
-    });
-  }
-
   function attemptRestore(lang, attemptCount) {
-    if (!lang || lang === 'ko') return true;
+    if (!lang || lang === "ko") return true;
 
     if (applyComboLanguage(lang)) {
-      markCurrentLanguage(lang);
+      currentLang = lang;
+      syncLanguageButtons();
       return true;
     }
 
@@ -243,13 +325,41 @@
     return false;
   }
 
-  function applySelectedLanguage(lang) {
-    currentLang = lang || 'ko';
-    setStoredLanguage(lang);
+  function restoreLanguage(lang) {
+    clearTimers(restoreTimers);
+    clearTimers(retryTimers);
 
-    if (!lang || lang === 'ko') {
+    if (!lang || lang === "ko") {
       clearTranslateCookie();
-      markCurrentLanguage('ko');
+      currentLang = "ko";
+      syncLanguageButtons();
+      return;
+    }
+
+    currentLang = lang;
+    setStoredLanguage(lang);
+    setCookie("googtrans", `/ko/${lang}`);
+    syncLanguageButtons();
+
+    loadGoogleTranslate(function () {
+      attemptRestore(lang, 0);
+    });
+
+    [500, 1200].forEach(function (delay) {
+      restoreTimers.push(
+        setTimeout(function () {
+          attemptRestore(lang, 0);
+        }, delay)
+      );
+    });
+  }
+
+  function applySelectedLanguage(lang) {
+    setStoredLanguage(lang);
+    if (!lang || lang === "ko") {
+      clearTranslateCookie();
+      currentLang = "ko";
+      syncLanguageButtons();
       window.location.reload();
       return;
     }
@@ -258,79 +368,149 @@
   }
 
   function openTranslateModal() {
-    var modal = document.getElementById('kbbqTranslateModal');
+    const modal = document.getElementById("kbbqTranslateModal");
     if (!modal) return;
     currentLang = getStoredLanguage();
     syncLanguageButtons();
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
     loadGoogleTranslate();
   }
 
   function closeTranslateModal() {
-    var modal = document.getElementById('kbbqTranslateModal');
+    const modal = document.getElementById("kbbqTranslateModal");
     if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
   }
 
-  function bind() {
+  function bindInteractions() {
+    const float = document.querySelector(".kbbq-float");
+    if (float && float.getAttribute("data-kbbq-bound") !== "1") {
+      float.setAttribute("data-kbbq-bound", "1");
+      float.addEventListener("click", function (event) {
+        const openBtn = event.target.closest("#kbbqTranslateOpen");
+        const topBtn = event.target.closest("#kbbqFloatTop");
+        if (openBtn) {
+          event.preventDefault();
+          openTranslateModal();
+          return;
+        }
+        if (topBtn) {
+          event.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    }
+
+    const modal = document.getElementById("kbbqTranslateModal");
+    if (modal && modal.getAttribute("data-kbbq-bound") !== "1") {
+      modal.setAttribute("data-kbbq-bound", "1");
+      modal.addEventListener("click", function (event) {
+        if (event.target.closest(".kbbq-translate-box") && !event.target.closest(".kbbq-translate-close")) {
+          const langBtn = event.target.closest("[data-kbbq-lang]");
+          if (langBtn) {
+            const lang = langBtn.getAttribute("data-kbbq-lang");
+            closeTranslateModal();
+            applySelectedLanguage(lang);
+          }
+          return;
+        }
+
+        if (event.target.closest(".kbbq-translate-close")) {
+          closeTranslateModal();
+          return;
+        }
+
+        if (event.target === modal) {
+          closeTranslateModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeTranslateModal();
+    });
+
+    const tappableSelector = "a.kbbq-btn, a.kbbq-call, .kbbq-bottom-cta a, .kbbq-channel .kbbq-btn";
+    document.addEventListener(
+      "click",
+      (event) => {
+        const link = event.target.closest(tappableSelector);
+        if (!link || !mobileTapQuery.matches) return;
+        if (
+          event.defaultPrevented ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button > 0
+        ) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+        if (!href || link.dataset.tapLock === "1") return;
+
+        event.preventDefault();
+        link.dataset.tapLock = "1";
+        link.classList.add("is-tapping");
+
+        if (hasVibrate) {
+          try {
+            navigator.vibrate(10);
+          } catch (error) {}
+        }
+
+        const release = () => {
+          link.classList.remove("is-tapping");
+          delete link.dataset.tapLock;
+        };
+
+        const target = link.getAttribute("target");
+        if (target === "_blank") {
+          const popup = window.open("about:blank", "_blank", "noopener,noreferrer");
+          window.setTimeout(() => {
+            release();
+            if (popup && !popup.closed) {
+              try {
+                popup.location.href = href;
+                return;
+              } catch (error) {}
+            }
+            window.open(href, "_blank", "noopener,noreferrer");
+          }, 120);
+          return;
+        }
+
+        window.setTimeout(() => {
+          release();
+          window.location.href = href;
+        }, 120);
+      },
+      { passive: false }
+    );
+  }
+
+  function init() {
+    buildFloatingStructure();
+    setFloatingDecorations();
+    syncLanguageButtons();
+    bindInteractions();
+    restoreLanguage(getStoredLanguage());
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  window.addEventListener("pageshow", function () {
     currentLang = getStoredLanguage();
-    setFloatingButtonsMarkup();
+    buildFloatingStructure();
+    setFloatingDecorations();
     syncLanguageButtons();
     restoreLanguage(currentLang);
-
-    var topBtn = document.getElementById('kbbqFloatTop');
-    if (topBtn) {
-      topBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    var translateBtn = document.getElementById('kbbqTranslateOpen');
-    if (translateBtn) {
-      translateBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        openTranslateModal();
-      });
-    }
-
-    var closeBtn = document.getElementById('kbbqTranslateClose');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeTranslateModal);
-    }
-
-    var modal = document.getElementById('kbbqTranslateModal');
-    if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeTranslateModal();
-      });
-    }
-
-    document.querySelectorAll('[data-kbbq-lang]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var lang = btn.getAttribute('data-kbbq-lang');
-        closeTranslateModal();
-        applySelectedLanguage(lang);
-      });
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeTranslateModal();
-    });
-
-    window.addEventListener('pageshow', function () {
-      currentLang = getStoredLanguage();
-      setFloatingButtonsMarkup();
-      syncLanguageButtons();
-      restoreLanguage(currentLang);
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bind);
-  } else {
-    bind();
-  }
+  });
 })();
