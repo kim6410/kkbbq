@@ -5,8 +5,8 @@
   const KBBQ_FLOAT_CONFIG = Object.freeze({
     phone: "050713935889",
     phoneLabel: "0507-1393-5889",
-    bookingUrl:
-      "https://m.booking.naver.com/booking/6/bizes/425958/items/3631234?area=pll&lang=ko&service-target=map-pc&startDate=2026-06-07&theme=place",
+    bookingBaseUrl:
+      "https://m.booking.naver.com/booking/6/bizes/425958/items/3631234?area=pll&lang=ko&service-target=map-pc",
     placeUrl: "https://naver.me/xAF7Sexr",
     tmapUrl: "https://tmap.life/7925659a",
     instagramUrl: "https://www.instagram.com/kkbbq5889",
@@ -86,6 +86,35 @@
       .replace(/"/g, "&quot;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
+  }
+  function getKoreaTodayYmd() {
+    const parts = new Intl.DateTimeFormat("en", {
+      timeZone: "Asia/Seoul",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
+
+    const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${map.year}-${map.month}-${map.day}`;
+  }
+
+  function getBookingUrl() {
+    const url = new URL(KBBQ_FLOAT_CONFIG.bookingBaseUrl);
+    url.searchParams.set("startDate", getKoreaTodayYmd());
+    return url.toString();
+  }
+
+  function syncBookingLinks() {
+    const bookingUrl = getBookingUrl();
+
+    document.querySelectorAll("[data-kbbq-booking-link]").forEach((link) => {
+      link.setAttribute("href", bookingUrl);
+    });
+
+    document.querySelectorAll(".kbbq-float .booking").forEach((link) => {
+      link.setAttribute("href", bookingUrl);
+    });
   }
 
   function getStoredLanguage() {
@@ -181,7 +210,7 @@
       <a class="call" href="tel:${KBBQ_FLOAT_CONFIG.phone}" aria-label="전화 문의 ${KBBQ_FLOAT_CONFIG.phoneLabel}">
         <span class="kbbq-float-call" aria-hidden="true">☎</span>
       </a>
-      <a class="booking" href="${escapeHtml(KBBQ_FLOAT_CONFIG.bookingUrl)}" target="_blank" rel="noopener" aria-label="네이버 예약">
+      <a class="booking" href="${escapeHtml(getBookingUrl())}" data-kbbq-booking-link="true" target="_blank" rel="noopener" aria-label="네이버 예약">
         <span class="kbbq-float-label">예약</span>
       </a>
       <a class="place" href="${escapeHtml(KBBQ_FLOAT_CONFIG.placeUrl)}" target="_blank" rel="noopener" aria-label="네이버 플레이스">
@@ -588,6 +617,7 @@
   function init() {
     buildFloatingStructure();
     setFloatingDecorations();
+    syncBookingLinks();
     syncLanguageButtons();
     bindInteractions();
     restoreLanguage(getStoredLanguage());
